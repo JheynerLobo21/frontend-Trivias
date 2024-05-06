@@ -1,0 +1,260 @@
+.cross-one {
+    background-color: #ff7b00;
+    height: 10vw;
+    width: 4vw;
+    z-index: -1;
+    position: absolute;
+    transform: rotate(45deg); 
+    transition: transform 0.3s ease;
+}
+
+.cross-one:after {
+    background-color: #ff7b00;
+    content: "";
+    height: 4vw;
+    left: -3vw;
+    z-index: -1;
+    position: absolute;
+    top: 3vw;
+    width: 10vw;
+}
+
+.cross-two {
+    background-color: #fffb00;
+    height: 5vw;
+    width: 2vw;
+    position: absolute;
+    z-index: -1;
+    transform: rotate(10deg); 
+}
+
+.cross-two:after {
+    background-color: #fffb00;
+    content: "";
+    height: 2vw;
+    left: -1.5vw;
+    z-index: -1;
+    position: absolute;
+    top: 1.5vw;
+    width: 5vw;
+}
+
+.cross-three {
+    background-color: #639610;
+    height: 5vw;
+    width: 2vw;
+    z-index: -1;
+    position: absolute;
+    transform: rotate(82deg); 
+}
+
+.cross-three:after {
+    background-color: #639610;
+    content: "";
+    height: 2vw;
+    left: -1.5vw;
+    z-index: -1;
+    position: absolute;
+    top: 1.5vw;
+    width: 5vw;
+}
+
+.cross-four {
+    background-color: #00b7ff;
+    height: 5vh;
+    width: 2vh;
+    z-index: -1;
+    position: absolute;
+}
+
+.cross-four:after {
+    background-color: #00b7ff;
+    content: "";
+    height: 2vh;
+    left: -1.5vh;
+    position: absolute;
+    top: 1.5vh;
+    width: 5vh;
+}
+
+.trapeze-one {
+    width: 4vh;
+    height: 7vw;
+    border-left: 1vh solid transparent; 
+    border-right: 1vw solid transparent;
+    border-top: 4vw solid rgb(189, 186, 13); 
+    z-index: -1;
+    position: absolute;
+    transform: rotate(40deg);
+}
+
+.trapeze-two {
+    width: 7.5vw;
+    height: 7.5vw;
+    border-left: 1.88vw solid transparent; 
+    border-right: 1.88vw solid transparent;
+    border-top: 7.5vw solid rgb(255, 0, 191); 
+    z-index: -1;
+    position: absolute;
+    transform: rotate(120deg);
+}
+
+.trapeze-three {
+    width: 3.5vw;
+    height: 3.5vw;
+    border-left: 0.7vw solid transparent; 
+    border-right: 0.7vw solid transparent;
+    border-top: 3.5vw solid rgb(18, 141, 135); 
+    z-index: -1;
+    position: absolute;
+    transform: rotate(70deg);
+}
+
+.circle-one {
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: blue;
+    z-index: -1;
+    position: absolute;
+}
+  
+  .circle-two {
+    width: 8vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: red;
+    z-index: -1;
+    position: absolute;
+}
+  
+  .circle-three {
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    background-color: green;
+    z-index: -1;
+    position: absolute;
+}
+  
+  .circle-four {
+    width: 4vh;
+    height: 4vh;
+    border-radius: 50%;
+    background-color: rgb(73, 117, 211);
+    z-index: -1;
+    position: absolute;
+}
+  
+  .circle-five {
+    width: 11vh;
+    height: 7vh;
+    border-radius: 50%;
+    background-color: rgba(132, 219, 31, 0.589);
+    z-index: -1;
+    position: absolute;
+}
+  
+  .circle-six {
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    background-color: rgb(137, 16, 218);
+    z-index: -1;
+    position: absolute;
+}
+
+.triangle-one{
+    width: 0;
+    height: 0;
+    border-left: 10vh solid transparent; 
+    border-right: 7vw solid transparent; 
+    border-bottom: 10vh solid rgb(0, 255, 85); 
+    z-index: -1;
+    position: absolute;
+}
+
+.triangle-two{
+    width: 0;
+    height: 0;
+    border-left: 5vh solid transparent; 
+    border-right: 2.5vw solid transparent; 
+    border-bottom: 10vh solid rgb(63, 75, 245); 
+    z-index: -1;
+    position: absolute;
+}
+
+.square-one {
+    width: 7vh; 
+    padding-top: 3vw; 
+    background-color: rgb(0, 255, 115); 
+    z-index: -1;
+    position: absolute;
+}
+
+.square-two {
+    width: 7vh; 
+    padding-top: 3vw; 
+    background-color: rgb(229, 248, 58); 
+    z-index: -1;
+    position: absolute;
+}
+
+.square-three {
+    width: 7vh; 
+    padding-top: 3vw; 
+    background-color: rgb(0, 255, 115); 
+    z-index: -1;
+    position: absolute;
+}
+
+.square-four {
+    width: 7vh; 
+    padding-top: 3vw; 
+    background-color: rgb(0, 255, 115); 
+    z-index: -1;
+    position: absolute;
+    transform: rotate(45deg);
+}
+
+.pentagon-one {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    background-color: rgba(92, 235, 128, 0.575);
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    z-index: -1;
+    position: absolute;
+}
+
+.star-one{
+    width: 60px;
+    height: 60px;
+    position: relative;
+    background-color: rgba(125, 12, 160);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    z-index: -1;
+    position: absolute;
+}
+
+.star-two{
+    width: 60px;
+    height: 60px;
+    position: relative;
+    background-color: rgb(111, 209, 46);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    z-index: -1;
+    position: absolute;
+    transform: rotate(30deg);
+}
+
+.star-three{
+    width: 60px;
+    height: 60px;
+    position: relative;
+    background-color: rgb(14, 95, 150);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    z-index: -1;
+    position: absolute;
+    transform: rotate(15deg);
+}

@@ -1,0 +1,347 @@
+h1{
+ text-transform: uppercase;
+ margin-top: 40px;
+}
+
+main{
+  align-items: baseline;
+}
+
+.listsubcategories-menu{
+  list-style: none;
+    margin: 0;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30vh, 1fr));
+    width: 100%;
+    margin: 0 auto;
+}
+
+.subcategorias{
+  list-style: none;
+  padding: 5px;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.button-background {
+  position: absolute;
+  top: var(--y, 0);
+  left: var(--x, 0);
+  width: 0;
+  height: 0;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: width 1s, height 1s;
+}
+
+.button:hover .button-background {
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+}
+
+.descriptionsubcategory{
+  width: 30%;
+  margin-right: 5%;
+  display: none;
+}
+.listsubcategories{
+  width: 60%;
+}
+
+.title-category{
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display: flex;
+  justify-content: center;
+  text-transform: capitalize;
+
+}
+
+.cultura-general,
+.gastronomía,
+.películas-y-series,
+.música,
+.literatura,
+.ciencia-y-tecnología,
+.historia-mundial,
+.deportes {
+  background-color: transparent;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 30vh;
+  height: 10vh;
+  border-radius: 8px;
+  margin: 1rem 1rem;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.cultura-general span,
+.gastronomía span,
+.películas-y-series span,
+.música span,
+.literatura span,
+.ciencia-y-tecnología span,
+.historia-mundial span,
+.deportes span {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  -webkit-transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.cultura-general:hover span,
+.gastronomía:hover span,
+.películas-y-series:hover span,
+.música:hover span,
+.literatura:hover span,
+.ciencia-y-tecnología:hover span,
+.historia-mundial:hover span,
+.deportes:hover span {
+  width: 225%;
+  height: 562.5px;
+}
+
+.cultura-general {
+  color: #03BB85;
+  border: 2px solid #03BB85;
+}
+
+.cultura-general:hover, .cultura-general:focus, .cultura-general:active {
+  color: white;
+  background-color: #03BB85;
+}
+
+.cultura-general:hover {
+  box-shadow: 0 0 30px #03BB85;
+}
+
+.cultura-general span {
+  background-color: #03BB85;
+}
+
+.cultura-general-infocus-button:focus {
+  background-color: transparent;
+  color: #03BB85;
+}
+
+.gastronomía {
+  color: white;
+  border: 2px solid #808000;
+}
+
+.gastronomía:hover, .gastronomía:focus, .gastronomía:active {
+  color: white;
+  background-color: #808000;
+}
+
+.gastronomía:hover {
+  box-shadow: 0 0 10px #808000;
+}
+
+.gastronomía span {
+  background-color: #808000;
+}
+
+.gastronomía-infocus-button:focus {
+  background-color: transparent;
+  color: #808000;
+}
+
+.películas-y-series {
+  color: white;
+  border: 2px solid #B10202;
+}
+
+.películas-y-series:hover, .películas-y-series:focus, .películas-y-series:active {
+  color: white;
+  background-color: #B10202;
+}
+
+.películas-y-series:hover {
+  box-shadow: 0 0 10px #B10202;
+}
+
+.películas-y-series span {
+  background-color: #B10202;
+}
+
+.películas-y-series-infocus-button:focus {
+  background-color: transparent;
+  color: #B10202;
+}
+
+.música {
+  color: white;
+  border: 2px solid #FFA629;
+}
+
+.música:hover, .música:focus, .música:active {
+  color: white;
+  background-color: #FFA629;
+}
+
+.música:hover {
+  box-shadow: 0 0 10px #FFA629;
+}
+
+.música span {
+  background-color: #FFA629;
+}
+
+.música-infocus-button:focus {
+  background-color: transparent;
+  color: #FFA629;
+}
+
+.literatura {
+  color: white;
+  border: 2px solid #9747FF;
+}
+
+.literatura:hover, .literatura:focus, .literatura:active {
+  color: white;
+  background-color: #9747FF;
+}
+
+.literatura:hover {
+  box-shadow: 0 0 10px #9747FF;
+}
+
+.literatura span {
+  background-color: #9747FF;
+}
+
+.literatura-infocus-button:focus {
+  background-color: transparent;
+  color: #9747FF;
+}
+
+.historia-mundial {
+  color: white;
+  border: 2px solid #F5F5DC;
+}
+
+.historia-mundial:hover, .historia-mundial:focus, .historia-mundial:active {
+  color: black;
+  background-color: #F5F5DC;
+}
+
+.historia-mundial:hover {
+  box-shadow: 0 0 10px #F5F5DC;
+}
+
+.historia-mundial span {
+  background-color: #F5F5DC;
+}
+
+.historia-mundial-infocus-button:focus {
+  background-color: transparent;
+  color: black;
+}
+
+.ciencia-y-tecnología {
+  color: white;
+  border: 2px solid #B2DAFA;
+}
+
+.ciencia-y-tecnología:hover, .ciencia-y-tecnología:focus, .ciencia-y-tecnología:active {
+  color: black;
+  background-color: #B2DAFA;
+}
+
+.ciencia-y-tecnología:hover {
+  box-shadow: 0 0 10px #B2DAFA;
+}
+
+.ciencia-y-tecnología span {
+  background-color: #B2DAFA;
+}
+
+.ciencia-y-tecnología-infocus-button:focus {
+  background-color: transparent;
+  color: black;
+}
+
+.deportes {
+  color: white;
+  border: 2px solid #4169E1;
+}
+
+.deportes:hover, .deportes:focus, .deportes:active {
+  color: white;
+  background-color: #4169E1;
+}
+
+.deportes:hover {
+  box-shadow: 0 0 10px #4169E1;
+}
+
+.deportes span {
+  background-color: #4169E1;
+}
+
+.deportes-infocus-button:focus {
+  background-color: transparent;
+  color: #4169E1;
+}
+
+.img-carrusel{
+  float: inline-start;
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.description-subcategory{
+  display: inline-block;
+}
+
+.title-subcategory{
+  text-align: center;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-top: -60px;
+
+}
+
+.options-dificult{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+select{
+  border-radius: 5px;
+  height: 20px;
+}
+
+section{
+  margin: 0;
+}
+
+

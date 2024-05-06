@@ -1,0 +1,53 @@
+.list-categories {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin-top: -30px;
+}
+
+.categories {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45vh, 1fr));
+    width: 90%;
+}
+
+.category-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.trapeze-0,
+.trapeze-2,
+.trapeze-4,
+.trapeze-6 {
+    transform: rotate(180deg);
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    z-index: 1;
+    padding: auto;
+}
+
+p {
+    margin-top: 15px;
+    z-index: 1; 
+}
+
+.trapeze-0:hover{
+    width: 150px;
+    height: 150px;
+    background-color:brown ;
+}
+

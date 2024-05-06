@@ -1,0 +1,248 @@
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0; 
+  height: 100vh;
+  overflow: hidden;
+}
+
+.logo{
+  background-color: #D9D9D980;
+  height: 300px;
+  width: 250px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.logo-image{
+  height: 270px;
+  width: 220px;
+}
+
+.login{
+  background-color: #9747FF71;
+  height: 300px;
+  width: 350px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  gap: 15px;
+  overflow: hidden;
+}
+
+.input-container{
+  position: relative;
+  display: flex;
+  margin-left: 8%;
+  justify-content: center;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.label-user{
+  position: absolute;
+  left: 5%;
+  top: 12px;
+  transition: all 0.2s;
+  padding: 3px;
+  z-index: 1;
+  color: #fff;
+  background-color:#9747FF71;
+}
+
+.label-password{
+  position: absolute;
+  left: 5%;
+  top: 71px;
+  transition: all 0.2s;
+  padding: 3px;
+  z-index: 1;
+  color: #fff;
+  background-color:#9747FF71;
+}
+
+.input-user,
+.input-password{
+  padding: 0.8rem;
+  height: 100%;
+  width: 80%;
+  border-radius: 10px;
+  outline: none;
+  border: 2px solid #ccc;
+  background-color: transparent;
+  transition: all .3s;
+  color: #fff;
+}
+
+
+.input-user:focus,
+.input-password:focus,
+.input-user:valid,
+.input-password:valid{
+  border:2px solid #2ac2f0;
+  background-color: transparent;
+}
+
+.input-user:focus+.label-user,
+.input-user:valid+.label-user,
+.filled{
+  padding: 3px;
+  top: -10px;
+  font-size: 14px;
+  color: white;
+  margin-right: 10%;
+  background-color: #9747FF;
+}
+
+.input-password:focus+.label-password,
+.input-password:valid+.label-password,
+.filled{
+  padding: 3px;
+  top: 51px;
+  font-size: 14px;
+  color: white;
+  margin-right: 10%;
+  background-color: #9747FF;
+}
+
+.input-user::placeholder,
+.input-password::placeholder{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #ccc;
+  opacity: 0;
+  transition: all .3s;
+}
+
+.input-user:focus,
+.input-password:focus{
+  outline: none;
+}
+
+.input-user:focus::placeholder,
+.input-password:focus::placeholder{
+  opacity: 1;
+  animation-delay: 0.2s;
+  color: white;
+  left: 15%;
+}
+
+@media (max-width:620px) {
+  .logo {
+    visibility: hidden;
+    width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login {
+    width: 80%;
+    border-radius: 10px;
+    z-index: 1;
+  }
+  .activo {
+    display: none;
+  }
+
+  main{
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto; 
+  height: 100vh;
+  }
+}
+
+.login-pass{
+  display: flex;
+  text-align: right;
+  margin-right: 10%;
+  justify-content: center;
+  margin-top: 10px;
+  flex-direction: column;
+}
+
+.sign-up{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-direction: column;
+  gap: -50px;
+}
+
+a{
+  color: white;
+}
+
+#lost-password{
+  margin-top: -10px;
+  margin-bottom: 7px;
+  text-align: right;
+  font-size: 12px;
+}
+
+.btn-log-in{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p{
+  text-align: center;
+  color: white;
+  margin-top: 5px;
+}
+
+.sign-Google,
+.sign-in-google{
+display: flex;
+align-items: center;
+justify-content: center;
+height: 30px;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border: none;
+  background-color: #007bff; 
+  color: white;
+  font-size: 16px;
+}
+
+.icon-button img {
+  width: 24px; 
+  height: 24px;
+  margin-right: 8px;
+  padding: 2px;
+}
+
+.logo-google{
+  background-color: white;
+}
+
+.btn-login{
+  border: 0;
+  background-image:linear-gradient(
+    150deg,
+    #9747FF,
+    #2531AA,
+    #007bff);
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    font-size: 18px;
+    padding: 4px 24px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-login:active{
+  scale: 0.9;
+}
