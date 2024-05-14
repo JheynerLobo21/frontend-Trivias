@@ -40,7 +40,9 @@ img {
     padding: auto;
 }
 
-p {
+.descriptivo {
+    text-align: center;
+    color: #fff;
     margin-top: 15px;
     z-index: 1; 
 }

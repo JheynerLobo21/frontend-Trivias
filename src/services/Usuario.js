@@ -1,8 +1,9 @@
 let servidorAPI="http://localhost:8104/"
 
-export const triviaData = async (idSubcategory, dificultad)=>{
+export const getUser = async (idAuth)=>{
     try{
-        const question= await fetch(servidorAPI+ "api/public/Question/Random/"+idSubcategory+","+dificultad, {
+        console.log(idAuth)
+        const question= await fetch(servidorAPI+ "api/public/User/"+idAuth, {
             method:"GET",
             headers: {
                 "Accept": "application/json",
@@ -10,25 +11,25 @@ export const triviaData = async (idSubcategory, dificultad)=>{
             }
         });
         //console.log(await question.json());
+        if(question.status!=204)
         return await question.json();
+        else{return null;}
     }catch(err){
         console.log(err);
     }
 }
-export const saveScore = async (idUser,idSubcategory, score)=>{
+export const createUser = async (user)=>{
     try{
-        console.log(score)
-        console.log(idSubcategory)
-        console.log(idUser)
-        const question= await fetch(servidorAPI+ "api/public/User/Score/"+idUser+","+idSubcategory+","+score, {
-            method:"PATCH",
+        const question= await fetch(servidorAPI+ "api/public/User", {
+            method:"POST",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
-            }
+            },
+            body:JSON.stringify(user)
         });
         //console.log(await question.json());
-        return question.status;
+        return await question.json();
     }catch(err){
         console.log(err);
     }

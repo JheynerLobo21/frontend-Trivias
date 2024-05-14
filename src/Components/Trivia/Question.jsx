@@ -10,7 +10,9 @@ export const Question = ({ question, options, correctAnswer, handleAnswer }) => 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const isCorrect = selectedOption === correctAnswer;
+        console.log(selectedOption)
+        console.log(correctAnswer.description)
+        const isCorrect = selectedOption.description === correctAnswer.description;
         if (isCorrect) {
             handleAnswer(true); 
         } 
@@ -31,7 +33,7 @@ export const Question = ({ question, options, correctAnswer, handleAnswer }) => 
                         style={{ marginRight: '10px' }}
                         className={selectedOption === option ? 'selected' : ''}
                     >
-                        {option}
+                        {option.description}
                     </button>
                 ))}
             </form>

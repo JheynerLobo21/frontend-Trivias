@@ -24,7 +24,8 @@ export const ButtonSubcategories = ({ subcategory, onBtnClick }) => {
     };
 
     const handleClick = () => {
-      let btnSubcategory=document.getElementById(subcategory).value;
+      let btnSubcategory=document.getElementById(subcategory.name).value;
+      localStorage.setItem("subCategorySelected",JSON.stringify(subcategory));
         if (current === btnSubcategory) {
             setAsideVisible(!asideVisible);
         } else {
@@ -32,27 +33,29 @@ export const ButtonSubcategories = ({ subcategory, onBtnClick }) => {
             setCurrentSubcategory(current);
             setAsideVisible(true);}  
             if(onBtnClick){
-              onBtnClick(btnSubcategory)
+              onBtnClick(subcategory)
             }
         }
 
     useEffect(() => {
       const aside = document.getElementById('descriptionsubcategory');
+      const asideB= document.getElementById('listsubcategories');
         if (aside) {
             aside.style.display = asideVisible ? 'block' : 'none';
+            asideB.style.width = asideVisible ? '45%' : '55%' 
         }
     }, [asideVisible]);
 
     return (
         <button
-            className={`${localStorage.getItem("category")} ${!asideVisible ? `${localStorage.getItem("category")}-infocus-button`:""}`}
+            className={`${JSON.parse(localStorage.getItem("category")).name} ${!asideVisible ? `${JSON.parse(localStorage.getItem("category")).name}-infocus-button`:""}`}
             onMouseEnter={handleMouseEnter}
             onMouseOut={handleMouseOut}
             onClick={handleClick}
-            value={subcategory}
-            id={subcategory}
+            value={subcategory.name}
+            id={subcategory.name}
         >
-            {subcategory}
+            {subcategory.name}
             <span className='span-posnawr'></span>
         </button>
     );

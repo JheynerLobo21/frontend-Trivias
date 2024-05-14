@@ -1,39 +1,64 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import '../../css/subcategories.css';
+import { pathName } from '../../constants';
+import { Link } from 'react-router-dom';
+
+
+
 
 export const DescryptionSubcategory = ({ btnSubcategory }) => {
-    const category = decodeURIComponent(window.location.pathname);
-    const subcategory = btnSubcategory.replace(/ /g, "-");
-    const urlSubcategory = `${category}/${subcategory}`;
+    const [dataForm,setDataForm] = useState({});
+    console.log(btnSubcategory);
+    const category = JSON.parse(localStorage.getItem("category"));
+    let data={}
+    let subcategory="";
+    let primera=true;
+    if(btnSubcategory!=""){
+        primera=false;
+    }
+    if(!primera)
+    subcategory= btnSubcategory.name.replace(/ /g, "-");
+    else
+    subcategory = btnSubcategory.replace(/ /g, "-");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(urlSubcategory);
+        const data = {
+            dificultad: document.getElementById("type-dificults").value,
+            idSubCategory: btnSubcategory.idSubCategory
+        };
+        setDataForm(data);
+        localStorage.setItem("data", JSON.stringify(data));
+        window.location.href=`/categories/${category.name}/${subcategory}`;
     };
 
     return (
         <section>
-            <h2 className='title-subcategory'>{btnSubcategory}</h2>
+            <h2 className='title-subcategory'>{!primera?btnSubcategory.name:""}</h2>
             <div className='description-img'>
                 <img src="" alt="" className="img-carrusel"/>
-                <p className='description-subcategory'>Descubre los avances más recientes en ciencia y tecnología, desde descubrimientos fascinantes en el universo hasta innovaciones revolucionarias en el mundo digital.</p>
+                <p className='description-subcategory'>{!primera?btnSubcategory.description:""}</p>
             </div>
             <div>
-                <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                     <p>Selecciona una dificultad de juego</p>
                     <div className='options-dificult'>
                         <select name="dificult" id="type-dificults" required>
                             <option value="">Seleccione...</option>
-                            <option value="Noob">Noob</option>
-                            <option value="Donatello">Donatello</option>
-                            <option value="Einstein">Einstein</option>
+                            <option value="1">Simio</option>
+                            <option value="2">Humano</option>
+                            <option value="3">Alien</option>
                         </select>
-                        <Link to={{ pathname: urlSubcategory }}> 
-                            <button type='submit'>Empezar</button>
-                        </Link>  
+                        <button type='submit'>Empezar</button>
                     </div>
                 </form>
+                <Link 
+                    to={`/categories/${category.name}/${subcategory}`} 
+                    state={dataForm} 
+                    className="start-link"
+                >
+                    Empezar
+                </Link>
             </div>
         </section>
     );

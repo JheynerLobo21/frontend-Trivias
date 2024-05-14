@@ -53,12 +53,12 @@ main{
 }
 
 .descriptionsubcategory{
-  width: 30%;
-  margin-right: 5%;
+  width: 45%;
+  margin-right: 3%;
   display: none;
 }
 .listsubcategories{
-  width: 60%;
+  width: 55%;
 }
 
 .title-category{

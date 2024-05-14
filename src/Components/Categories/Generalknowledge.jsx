@@ -10,13 +10,13 @@ export const Generalknowledge = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [btnSubcategory, setBtnSubcategory] = useState('');
 
-  const categoryName=localStorage.getItem('category');
+  const category=localStorage.getItem('category');
 
     const handleBtnClick = (btnSubcategory) => {
         setBtnSubcategory(btnSubcategory);
     };
 
-  const categoryTitle=categoryName.replace(/-/g," ");
+  const categoryTitle=category.name.replace(/-/g," ");
 
   if (isLoading) {
     return <CallbackPage/>;
@@ -32,7 +32,7 @@ export const Generalknowledge = () => {
         <DescryptionSubcategory btnSubcategory={btnSubcategory}/>
       </aside>
       <aside className='listsubcategories'>
-      <OptionsSubcategories categoryName={categoryName} btnSubcategory onBtnClick={handleBtnClick}/>
+      <OptionsSubcategories categoryName={category.name} btnSubcategory onBtnClick={handleBtnClick}/>
       </aside>
     </main>
     </>

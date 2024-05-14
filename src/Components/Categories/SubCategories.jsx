@@ -6,17 +6,19 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { CallbackPage } from '../Auth0/CallbackPage'
 import { DescryptionSubcategory } from './DescryptionSubcategory'
 
-export const Music = () => {
+
+export const SubCategories = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [btnSubcategory, setBtnSubcategory] = useState('');
 
-  const categoryName=localStorage.getItem('category');
+  const category=JSON.parse(localStorage.getItem('category'));
+  console.log(category);
 
-    const handleBtnClick = (btnSubcategory) => {
-        setBtnSubcategory(btnSubcategory);
+    const handleBtnClick = (subcategory) => {
+        setBtnSubcategory(subcategory);
     };
 
-  const categoryTitle=categoryName.replace(/-/g," ");
+  const categoryTitle=category.name.replace(/-/g," ");
 
   if (isLoading) {
     return <CallbackPage/>;
@@ -31,8 +33,8 @@ export const Music = () => {
       <aside className='descriptionsubcategory' id='descriptionsubcategory'>
         <DescryptionSubcategory btnSubcategory={btnSubcategory}/>
       </aside>
-      <aside className='listsubcategories'>
-      <OptionsSubcategories categoryName={categoryName} btnSubcategory onBtnClick={handleBtnClick}/>
+      <aside className='listsubcategories' id='listsubcategories'>
+      <OptionsSubcategories categoryName={category.name} btnSubcategory onBtnClick={handleBtnClick}/>
       </aside>
     </main>
     </>

@@ -1,50 +1,71 @@
-import React from 'react';
+import {helpHttp} from '../../helpers/helpHttp';
+import React, { useEffect, useState } from 'react';
 import '../../css/listCategories.css';
 import { Link } from 'react-router-dom';
-import {colors, imagenes} from '../../constants'
+import {colors, imagenes, servidorAPI} from '../../constants'
 
-export const ListCategories = () => {
 
-    {/* try {
-    const response = await helpHttp().post(SERVIDOR_API + "Usuario/findAdmin", {
-        body: form,
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
+
+    
+        
+        
+    const getImg = (imagenes, id) => {
+        const imagen = imagenes.find((imagen) => imagen.id === id);
+        if (imagen) {
+            console.log(imagen.path);
+            return imagen.path;
         }
-    });
-    console.log(response);
-} catch (error) {
-    console.error(error);
-} */}
-    const initialCategories = [
-        "Cultura General",
-        "Gastronomía",
-        "Películas y series",
-        "Música",
-        "Literatura",
-        "Historia Mundial",
-        "Ciencia y tecnología",
-        "Deportes"
-    ];
+    };
+
+    const getColor = (colors, id) => {
+        const color = colors.find((color) => color.id === id);
+        if (color) {
+            console.log(color.path);
+            return color.path;
+        }
+    };
+    
+export const ListCategories =  () => {
+
+    
+    const [categories,setCategories]=useState([]);
+        useEffect(()=>{
+            const getCategories=async()=>{
+            try {
+                const response =  await helpHttp().get(servidorAPI+ "api/public/Category", {
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    }
+                });
+                setCategories(await response);
+                console.log(await response);
+                return response;
+            } catch (error) {
+                console.error(error);
+            }   }
+        
+        getCategories();
+        },[]) 
+
 
     const adaptCategories = (categories) => {
-        return categories.map(category => category.toLowerCase().replace(/\s/g, '-'));
+        return categories.map(category => category.name.toLowerCase().replace(/\s/g, '-'));
     };
 
     const guardarCategoria = (category) => {
-        localStorage.setItem('category', category.toLowerCase());
+        localStorage.setItem('category', JSON.stringify({name:category.name.toLowerCase(),id:category.idCategory}));
       };
 
-    const initCategories=adaptCategories(initialCategories);
+    const initCategories=adaptCategories(categories);
     
     return (
         <main className='list-categories'>
             <ul className='categories'>
-                {initCategories.map((category, index) => (
+                {categories.map((category, index) => (
                     <li className='category' key={index}>
                         <Link
-                            to={`/categories/${category}`}
+                            to={`/categories/${initCategories[index]}`}
                             style={{
                                 textDecoration: 'none', 
                                 color: 'inherit', 
@@ -54,10 +75,10 @@ export const ListCategories = () => {
                            
                         >
                             <section className='category-section'>
-                                <img src={imagenes[index]} alt="img-category" />
-                                <div className={`trapeze-${index}`} style={{ borderBottom: `170px solid ${colors[index]}`, padding: 0, width: "150px", height: "0", borderLeft: "60px solid transparent", borderRight: "60px solid transparent", zIndex: "-1", position: "absolute" }} />
+                                <img src={getImg(imagenes,category.idCategory)} alt="img-category" />
+                                <div className={`trapeze-${index}`} style={{ borderBottom: `170px solid ${getColor(colors, category.idCategory)}`, padding: 0, width: "150px", height: "0", borderLeft: "60px solid transparent", borderRight: "60px solid transparent", zIndex: "-1", position: "absolute" }} />
                             </section>
-                            <p style={{textTransform:'uppercase'}}>{initialCategories[index]}</p>
+                            <p className="descriptivo" style={{textTransform:'uppercase'}}>{categories[index].name}</p>
                         </Link>
                     </li>
                 ))}
