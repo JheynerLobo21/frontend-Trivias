@@ -33,3 +33,5 @@ export const saveScore = async (idUser,idSubcategory, score)=>{
         console.log(err);
     }
 }
+
+

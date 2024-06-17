@@ -1,0 +1,31 @@
+[id*=timer]{
+    background-color: rgb(24, 243, 24);
+    width: 3.8vh;
+    height: 1.5vh;
+}
+
+[id*=timer]::after{
+    background-color: white;
+}
+
+.start{
+    border-top-left-radius: 40%;
+    border-bottom-left-radius: 40%;
+}
+
+.end{
+    border-top-right-radius: 40%;
+    border-bottom-right-radius: 40%;
+}
+
+.linetime{
+    margin-top: -10px;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    margin-bottom: 8px;
+}
+
+.divtime{
+    background-color: white;
+}

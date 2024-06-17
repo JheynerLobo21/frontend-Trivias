@@ -1,0 +1,33 @@
+.icon-header {
+    position: relative;  /* Asegura que .icon-header sea un contenedor relativo */
+    margin-top: 0vw;
+    margin-right: 4vw;
+    float: right;
+}
+
+.icon {
+    display: inline-block; 
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: super;
+    color: rgb(8, 241, 222);
+    font-size: 30px;  
+    line-height: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.cantidad {
+    width: 1.5vw;
+    height: 1.5vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);  /* Centra el elemento en la esquina */
+    color: #fff;
+    background-color: green;  /* Ejemplo de fondo para .cantidad */
+    border-radius: 50%;  /* Ajusta el radio del borde si lo necesitas */
+    text-align: center;  /* Asegura que el texto esté centrado */
+}

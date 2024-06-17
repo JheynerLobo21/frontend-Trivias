@@ -11,6 +11,47 @@
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 5px;
 }
+.main-trivia {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea los elementos internos a la izquierda */
+  width: 100%;
+  margin-top: 15px;
+  justify-content: normal;
+}
+
+.main-wildcards {
+  width: 100%; /* Abarca todo el ancho del contenedor principal */
+}
+.section-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+  justify-content: center; /* Centra el contenido verticalmente */
+  text-align: center;
+  width: 100%;
+   /* Ajusta el margen superior según sea necesario */
+}
+#root{
+  overflow: scroll;
+}
+
+.centered{
+  text-align: center;
+  color: #fff;
+}
+
+.form-answers{
+  display: flex;
+}
+
+.question-button{
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  border-radius: 8px;
+  border: none;  
+}
 
 .modal-content {
   background-color: #fefefe;
@@ -31,4 +72,40 @@
 
 .close-button:hover {
   color: black;
+}
+
+.question-trivia{
+  margin: 0 auto;
+  height:fit-content;
+  width: 80vh;
+  border-radius: 10px;
+  background-color: hsla(276, 95%, 63%);
+}
+
+
+.trivia-description{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  padding: 10px 10px 0 10px;
+  text-align: center;
+  border-radius: 10px;
+  height: fit-content;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.options{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30vh, 1fr));
+  gap: 15px;
+  padding: 15px;
+  width: 100%;
+}
+
+@media (max-width:620px) {
+  .question-trivia{
+    width: 60vh;
+  }
 }

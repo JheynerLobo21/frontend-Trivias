@@ -52,13 +52,6 @@ export const DescryptionSubcategory = ({ btnSubcategory }) => {
                         <button type='submit'>Empezar</button>
                     </div>
                 </form>
-                <Link 
-                    to={`/categories/${category.name}/${subcategory}`} 
-                    state={dataForm} 
-                    className="start-link"
-                >
-                    Empezar
-                </Link>
             </div>
         </section>
     );

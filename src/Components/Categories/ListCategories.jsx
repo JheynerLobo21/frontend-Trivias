@@ -3,11 +3,8 @@ import React, { useEffect, useState } from 'react';
 import '../../css/listCategories.css';
 import { Link } from 'react-router-dom';
 import {colors, imagenes, servidorAPI} from '../../constants'
+import { useAuth0 } from "@auth0/auth0-react";
 
-
-
-    
-        
         
     const getImg = (imagenes, id) => {
         const imagen = imagenes.find((imagen) => imagen.id === id);
@@ -26,27 +23,36 @@ import {colors, imagenes, servidorAPI} from '../../constants'
     };
     
 export const ListCategories =  () => {
+    const { isAuthenticated, getAccessTokenSilently } = useAuth0();
 
-    
     const [categories,setCategories]=useState([]);
+        console.log(isAuthenticated)
         useEffect(()=>{
             const getCategories=async()=>{
-            try {
-                const response =  await helpHttp().get(servidorAPI+ "api/public/Category", {
+
+            try { if (isAuthenticated) {
+                const token = await getAccessTokenSilently();
+                console.log("Este es el tocken");
+                console.log(token);
+                const response = await helpHttp().get(servidorAPI + "api/public/Category", {
                     headers: {
                         "Accept": "application/json",
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
                     }
                 });
                 setCategories(await response);
                 console.log(await response);
-                return response;
-            } catch (error) {
+            }
+        }
+            catch (error) {
                 console.error(error);
             }   }
         
         getCategories();
         },[]) 
+        console.log(categories);
+        
 
 
     const adaptCategories = (categories) => {
