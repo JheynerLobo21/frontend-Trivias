@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import '../../css/subcategories.css';
-let current="";
+let current = null;
+
 export const ButtonSubcategories = ({ subcategory, onBtnClick }) => {
-    const [currentSubcategory, setCurrentSubcategory] = useState('');
     const [asideVisible, setAsideVisible] = useState(false);
 
     const handleMouseEnter = (e) => {
@@ -24,31 +25,38 @@ export const ButtonSubcategories = ({ subcategory, onBtnClick }) => {
     };
 
     const handleClick = () => {
-      let btnSubcategory=document.getElementById(subcategory.name).value;
-      localStorage.setItem("subCategorySelected",JSON.stringify(subcategory));
-        if (current === btnSubcategory) {
-            setAsideVisible(!asideVisible);
-        } else {
-            current=btnSubcategory;
-            setCurrentSubcategory(current);
-            setAsideVisible(true);}  
-            if(onBtnClick){
-              onBtnClick(subcategory)
+        const btn = document.getElementById(subcategory.name);
+        const btnSubcategory = btn.value;
+
+        localStorage.setItem("subCategorySelected", JSON.stringify(subcategory));
+
+        if (current !== btnSubcategory) { 
+            if (current) {
+                document.getElementById(current).classList.remove('btn-clicked');
             }
+            btn.classList.add('btn-clicked');
+            current = btnSubcategory;
+            if (onBtnClick) {
+                onBtnClick(subcategory);
+            }
+            setAsideVisible(true);
+        } else {
+            setAsideVisible(!asideVisible);
         }
+    };
 
     useEffect(() => {
-      const aside = document.getElementById('descriptionsubcategory');
-      const asideB= document.getElementById('listsubcategories');
+        const aside = document.getElementById('descriptionsubcategory');
+        const asideB = document.getElementById('listsubcategories');
         if (aside) {
             aside.style.display = asideVisible ? 'block' : 'none';
-            asideB.style.width = asideVisible ? '45%' : '55%' 
+            asideB.style.width = asideVisible ? '45%' : '55%';
         }
     }, [asideVisible]);
 
     return (
         <button
-            className={`${JSON.parse(localStorage.getItem("category")).name} ${!asideVisible ? `${JSON.parse(localStorage.getItem("category")).name}-infocus-button`:""}`}
+            className={`${JSON.parse(localStorage.getItem("category")).name} ${!asideVisible ? `${JSON.parse(localStorage.getItem("category")).name}-infocus-button` : ""} ${asideVisible && 'btn-clicked'}`}
             onMouseEnter={handleMouseEnter}
             onMouseOut={handleMouseOut}
             onClick={handleClick}
@@ -60,3 +68,11 @@ export const ButtonSubcategories = ({ subcategory, onBtnClick }) => {
         </button>
     );
 };
+
+ButtonSubcategories.propTypes = {
+    subcategory:PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired,
+    onBtnClick: PropTypes.func,
+    initialVisible: PropTypes.bool,
+  };

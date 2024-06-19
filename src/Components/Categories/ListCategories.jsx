@@ -1,5 +1,5 @@
 import {helpHttp} from '../../helpers/helpHttp';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../../css/listCategories.css';
 import { Link } from 'react-router-dom';
 import {colors, imagenes, servidorAPI} from '../../constants'

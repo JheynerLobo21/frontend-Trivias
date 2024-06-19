@@ -1,5 +1,5 @@
-import React from 'react'
 import '../../css/navbar.css'
+import PropTypes from 'prop-types';
 import { useLocation, Link } from 'react-router-dom';
 import { Dropdown } from './UserSession';
 export const Navbar = ({user}) => {
@@ -21,3 +21,8 @@ export const Navbar = ({user}) => {
     </>
   )
 }
+
+Navbar.propTypes = {
+  user: PropTypes.object.isRequired,
+};
+

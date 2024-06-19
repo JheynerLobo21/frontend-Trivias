@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import  { useState } from 'react';
+import {  Link } from 'react-router-dom';
 import '../../css/app.css'
 import { Figures } from './Figures';
 

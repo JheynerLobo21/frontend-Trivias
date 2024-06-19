@@ -1,4 +1,3 @@
-import React from 'react'
 import '../../css/figures.css'
 
 export const Figures = () => {

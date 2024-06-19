@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Wildcard } from './Wildcard';
 import { getWildcards } from '../../services/Wildcard';
-
+import PropTypes from 'prop-types';
 
 
 
@@ -37,4 +37,8 @@ export function WildcardsBar({idUser,changeQuestion,activeShield}) {
         </>
       );
       
+}
+
+WildcardsBar.propTypes={
+    idUser:PropTypes.number.isRequired,
 }

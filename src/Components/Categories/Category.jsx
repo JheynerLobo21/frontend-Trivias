@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import {Navbar} from './Navbar.jsx'
 import '../../css/categories.css'
 import { ListCategories } from './ListCategories.jsx'
@@ -6,7 +6,6 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { CallbackPage } from '../Auth0/CallbackPage.tsx'
 import { getUser,createUser } from '../../services/Usuario.js'
 export const Category = () => {
-  const [usuario,setUsuario]= useState({})
   const { user, isAuthenticated, isLoading } = useAuth0();
   console.log(user);
   useEffect(() => {
@@ -20,7 +19,6 @@ export const Category = () => {
               email: user.email
           };
             userbd=await createUser(userbd)
-          setUsuario(userbd);
           console.log(userbd);}
           localStorage.setItem("usuario",JSON.stringify(userbd))
         } catch (error) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 export const Timer = ({ timeLeft }) => {
   return (
@@ -6,4 +6,8 @@ export const Timer = ({ timeLeft }) => {
       {timeLeft}
     </div>
   );
+};
+
+Timer.propTypes = {
+  timeLeft: PropTypes.number.isRequired,
 };

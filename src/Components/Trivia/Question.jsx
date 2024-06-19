@@ -1,10 +1,11 @@
-import React, { useEffect, useState} from 'react';
+import { useEffect, useState} from 'react';
 import { LineTime } from './LineTime';
 import { Link } from 'react-router-dom';
 import { Timer } from './Timer';
+import PropTypes from 'prop-types';
 import '../../css/Trivia.css'
 
-export const Question = ({ saveScore, user, data, question, options, correctAnswer, handleAnswer, score,category }) => {
+export const Question = ({ saveScore, user, data, question, options, correctAnswer, handleAnswer, score, category }) => {
     const [selectedOption, setSelectedOption] = useState('');
     const [timeLeft, setTimeLeft] = useState(20);
     const [clickOption, setClickOption] = useState(false);
@@ -103,4 +104,23 @@ export const Question = ({ saveScore, user, data, question, options, correctAnsw
             </form>
         </div>
     );*/
+};
+
+Question.propTypes = {
+    saveScore: PropTypes.func,
+    user: PropTypes.shape({
+        idUser: PropTypes.number.isRequired,
+    }).isRequired,
+    data: PropTypes.shape({
+        idSubCategory: PropTypes.number.isRequired,
+    }).isRequired,
+    question: PropTypes.string.isRequired, 
+    options: PropTypes.array.isRequired,
+    correctAnswer: PropTypes.shape({
+        answer: PropTypes.string.isRequired,
+    }).isRequired,
+    handleAnswer:PropTypes.func,
+    score:PropTypes.number.isRequired,
+    category:PropTypes.string.isRequired
+
 };

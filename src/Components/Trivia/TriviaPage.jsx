@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Question } from './Question';
 import { triviaData, saveScore } from '../../services/TriviaData';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Score } from './Score';
 import '../../css/Trivia.css';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -20,8 +20,7 @@ export const TriviaPage = () => {
     const data = JSON.parse(localStorage.getItem("data"));
     const category= decodeURIComponent(window.location.pathname.split("/")[2].replace(/-/g," "));
     const user2=JSON.parse(localStorage.getItem("usuario"))
-    const { user, isAuthenticated, isLoading } = useAuth0();
-    const navegation=useNavigate();
+    const { user } = useAuth0();
 
     console.log(user)
     useEffect(() => {

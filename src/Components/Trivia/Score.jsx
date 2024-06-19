@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 export const Score = ({ score }) => {
     return (
@@ -6,5 +6,9 @@ export const Score = ({ score }) => {
             <h3 className='centered'>Score: {score}</h3>
         </div>
     );
+};
+
+Score.propTypes={
+    score:PropTypes.number.isRequired,
 };
 
