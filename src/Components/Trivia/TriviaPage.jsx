@@ -11,6 +11,8 @@ import { WildcardsBar } from './WildcardsBar';
 export const TriviaPage = () => {
     const subcategory = decodeURIComponent(window.location.pathname.split("/")[3].replace(/-/g," "));
     const [score, setScore] = useState(0);
+    const [jump, setJump] = useState(0);
+    const [shield, setShield] = useState(false);
     const [timeLeft, setTimeLeft] = useState(20);
     const [showModal, setShowModal] = useState(false);
     const [question, setQuestion] = useState({});
@@ -37,7 +39,7 @@ export const TriviaPage = () => {
         };
 
         fetchData();
-    }, [score,data.idSubCategory, data.dificultad]);
+    }, [score,data.idSubCategory, data.dificultad,jump]);
 
     /*useEffect(() => {
         let intervalId;
@@ -63,11 +65,26 @@ export const TriviaPage = () => {
             setTimeLeft(20);
             setLoading(true);
         } else {
-            saveScore(user2.idUser,data.idSubCategory,score)
-            setShowModal(true);
-            setLoading(true);
+            if(shield){
+                setShield(false)
+                changeQuestion()
+            }else{
+                saveScore(user2.idUser,data.idSubCategory,score)
+                setShowModal(true);
+                setLoading(true);
+            }
+            
         }
     };
+
+    const changeQuestion=()=>{
+        setJump(jump+1);
+        setTimeLeft(20);
+        setLoading(true);
+    }
+    const activeShield=()=>{
+        setShield(true)
+    }
 
 
     return (
@@ -77,7 +94,11 @@ export const TriviaPage = () => {
         <main className='main-trivia'>
            
         <div className='main-wildcards'>
-                <WildcardsBar idUser={user2.idUser}/>
+                <WildcardsBar 
+                idUser={user2.idUser}
+                changeQuestion={changeQuestion}
+                activeShield={activeShield}
+                />
         </div>
             <section className='section-centered'>
                 <h1 className="centered">{subcategory}</h1>

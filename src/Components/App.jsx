@@ -10,7 +10,7 @@ import { SubCategories } from './Categories/SubCategories.jsx';
 import { CallbackPage } from './Auth0/CallbackPage.tsx';
 import { AuthenticationGuard } from './Auth0/AuthenticationGuard.tsx';
 import { TriviaPage } from './Trivia/TriviaPage.jsx';
-
+import { IsLoading } from './Loading/IsLoading.jsx';
 
 
 export  const App = () => {
@@ -25,6 +25,7 @@ export  const App = () => {
       <Route path='/homePage' element={<AuthenticationGuard component={HomePage}/>}></Route>
       <Route path="/callback" element={<CallbackPage />} />
       <Route path="*" element={<HomePage />} />
+      <Route path="/isLoading" element={<IsLoading />} />
     </Routes>
   );
 };

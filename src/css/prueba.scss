@@ -1,0 +1,61 @@
+
+$radius: 25px; // Ajusta el tamaño del "pacman"
+$speed: 0.5s;
+
+.loading-frame {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+
+.loading-pacman {
+  position: absolute;
+  width: $radius * 2;
+  height: $radius * 2;
+  background: yellow;
+  border-radius: 50%;
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+  animation: chomping $speed steps(2, end) infinite;
+}
+
+@keyframes chomping {
+  0% {
+    clip-path: polygon(100% 50%, 0 0, 0 100%);
+  }
+  50% {
+    clip-path: polygon(100% 50%, 25% 0, 25% 100%);
+  }
+  100% {
+    clip-path: polygon(100% 50%, 0 0, 0 100%);
+  }
+}
+
+.loading-dots {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.loading-dot {
+  width: 10px;
+  height: 10px;
+  background: yellow;
+  border-radius: 50%;
+  animation: dot-moving $speed linear infinite;
+}
+
+@keyframes dot-moving {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

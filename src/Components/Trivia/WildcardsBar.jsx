@@ -5,7 +5,7 @@ import { getWildcards } from '../../services/Wildcard';
 
 
 
-export function WildcardsBar({idUser}) {
+export function WildcardsBar({idUser,changeQuestion,activeShield}) {
     const [wildcards, setWildCards] = useState([]);
 
     useEffect(() => {
@@ -25,9 +25,16 @@ export function WildcardsBar({idUser}) {
 
     return (
         <>
-            {wildcards.map((wildcard, index) => (
-                <Wildcard key={index} wildcard={wildcard} />
-            ))}
+          {wildcards.map((wildcard, index) => (
+            
+              <Wildcard
+                key={index}
+                wildcard={wildcard}
+                funcionalidad={wildcard.wildcard.name === 'Salto' ? changeQuestion:(wildcard.wildcard.name === 'Escudo' ?activeShield:{})}
+              />
+            
+          ))}
         </>
-    );
+      );
+      
 }
