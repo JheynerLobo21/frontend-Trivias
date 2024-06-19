@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import '../../css/navbar.css';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -50,4 +51,11 @@ export const Dropdown = ({user}) => {
     <img src={picture} alt="foto perfil" className='fotoperfil'/>
     </>
   );
+};
+
+Dropdown.propTypes = {
+  user:PropTypes.shape({
+      picture: PropTypes.string.isRequired,
+      name:PropTypes.string.isRequired,
+    }).isRequired,
 };

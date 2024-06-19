@@ -18,6 +18,8 @@ main{
 }
 
 .subcategorias{
+  display: flex;
+  justify-content: center;
   list-style: none;
   padding: 5px;
 }
@@ -199,7 +201,7 @@ main{
   border: 2px solid #FFA629;
 }
 
-.música:hover, .música:focus, .música:active {
+.música:hover, .música:focus, .música:active, .btn-clicked {
   color: white;
   background-color: #FFA629;
 }
@@ -343,5 +345,3 @@ select{
 section{
   margin: 0;
 }
-
-

@@ -1,8 +1,10 @@
-import React,{useEffect,useState} from 'react';
+import {useEffect,useState} from 'react';
 import { ButtonSubcategories } from './ButtonSubcategories';
+import PropTypes from 'prop-types';
 import '../../css/subcategories.css';
 import {helpHttp} from '../../helpers/helpHttp';
 import {servidorAPI} from '../../constants'
+import { DescryptionSubcategory } from './DescryptionSubcategory';
 
 
 export const OptionsSubcategories = ({ onBtnClick }) => {
@@ -28,7 +30,7 @@ export const OptionsSubcategories = ({ onBtnClick }) => {
         },[]) 
 
     return (
-        <div>
+        <div className='group.subcategories'>
             <ul className='listsubcategories-menu'>
                 {subCategories.map((subcategory, index) => (
                     <li className='subcategorias' key={index}>
@@ -39,3 +41,8 @@ export const OptionsSubcategories = ({ onBtnClick }) => {
         </div>
     );
 };
+
+OptionsSubcategories.propTypes = {
+    onBtnClick: PropTypes.func,
+    initialVisible: PropTypes.bool,
+  };

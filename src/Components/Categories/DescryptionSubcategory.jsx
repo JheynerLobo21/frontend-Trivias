@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import '../../css/subcategories.css';
-import { pathName } from '../../constants';
-import { Link } from 'react-router-dom';
-
-
 
 
 export const DescryptionSubcategory = ({ btnSubcategory }) => {
-    const [dataForm,setDataForm] = useState({});
-    console.log(btnSubcategory);
-    const category = JSON.parse(localStorage.getItem("category"));
-    let data={}
+    console.log(btnSubcategory)
+    const category = JSON.parse(localStorage.getItem("category"))
     let subcategory="";
-    let primera=true;
-    if(btnSubcategory!=""){
-        primera=false;
+    let primera= true;
+    if(Object.entries(btnSubcategory).length!=0){
+        primera = false;
     }
     if(!primera)
-    subcategory= btnSubcategory.name.replace(/ /g, "-");
-    else
-    subcategory = btnSubcategory.replace(/ /g, "-");
+    subcategory=btnSubcategory.name.replace(/ /g, "-");
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -27,7 +19,6 @@ export const DescryptionSubcategory = ({ btnSubcategory }) => {
             dificultad: document.getElementById("type-dificults").value,
             idSubCategory: btnSubcategory.idSubCategory
         };
-        setDataForm(data);
         localStorage.setItem("data", JSON.stringify(data));
         window.location.href=`/categories/${category.name}/${subcategory}`;
     };
@@ -56,3 +47,12 @@ export const DescryptionSubcategory = ({ btnSubcategory }) => {
         </section>
     );
 };
+
+DescryptionSubcategory.propTypes = {
+    btnSubcategory:PropTypes.shape({
+        name: PropTypes.string,
+        description:PropTypes.string,
+        replace:PropTypes.string,
+        idSubCategory:PropTypes.number,
+      }).isRequired,
+  };

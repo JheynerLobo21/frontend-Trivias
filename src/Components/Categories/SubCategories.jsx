@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import '../../css/subcategories.css'
 import { Navbar } from './Navbar'
 import {OptionsSubcategories} from './OptionsSubcategories'
@@ -9,7 +9,7 @@ import { DescryptionSubcategory } from './DescryptionSubcategory'
 
 export const SubCategories = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  const [btnSubcategory, setBtnSubcategory] = useState('');
+  const [btnSubcategory, setBtnSubcategory] = useState({});
 
   const category=JSON.parse(localStorage.getItem('category'));
   console.log(category);
