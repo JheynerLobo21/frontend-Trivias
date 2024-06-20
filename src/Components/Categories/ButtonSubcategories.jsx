@@ -42,6 +42,7 @@ export const ButtonSubcategories = ({ subcategory, onBtnClick }) => {
             setAsideVisible(true);
         } else {
             setAsideVisible(!asideVisible);
+            btn.style.color="#fff"
         }
     };
 
@@ -50,7 +51,7 @@ export const ButtonSubcategories = ({ subcategory, onBtnClick }) => {
         const asideB = document.getElementById('listsubcategories');
         if (aside) {
             aside.style.display = asideVisible ? 'block' : 'none';
-            asideB.style.width = asideVisible ? '45%' : '55%';
+            asideB.classList.add = 'list-selected';
         }
     }, [asideVisible]);
 

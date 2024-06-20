@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import '../../css/subcategories.css';
 import {helpHttp} from '../../helpers/helpHttp';
 import {servidorAPI} from '../../constants'
-import { DescryptionSubcategory } from './DescryptionSubcategory';
 
 
 export const OptionsSubcategories = ({ onBtnClick }) => {
