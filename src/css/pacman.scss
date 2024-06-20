@@ -5,7 +5,7 @@ $speed: .7s;
 .frame {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 43.5%;
   width: 500px;
   height: 400px;
   margin-top: -200px;
@@ -95,7 +95,7 @@ $speed: .7s;
 	overflow: hidden;
   z-index: -1;
 }
-.light-bulb{
+.light-bulb:not(.logo-icon) {
 	position: relative;
 	animation: bombi $speed+7 linear infinite;
 	stroke-dashoffset: 14;
@@ -136,11 +136,24 @@ $speed: .7s;
 	  opacity: 0;
   }
   
-  #base {
+  #base:not(.logo-icon2) {
 	width: 10px;
 	height: 10px;
 	  position: absolute;
 	  top: 233px;
 	  left: 184px;
 	  fill: #E5E5E5;
+  }
+  .logo-icon2{
+	width: 10px;
+	height: 10px;
+	  position: absolute;
+	  top: 39px;
+	  left: 21px;
+	  fill: #E5E5E5;
+  }
+
+  .logo-icon #bulb, .logo-icon #glow{
+	top: 18px;
+	  left: 18px;
   }

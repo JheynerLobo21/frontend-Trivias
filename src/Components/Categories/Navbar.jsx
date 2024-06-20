@@ -2,6 +2,7 @@ import '../../css/navbar.css'
 import PropTypes from 'prop-types';
 import { useLocation, Link } from 'react-router-dom';
 import { Dropdown } from './UserSession';
+import { LightBulb } from '../Loading/LightBulb';
 export const Navbar = ({user}) => {
     const location = useLocation();
 
@@ -9,11 +10,21 @@ export const Navbar = ({user}) => {
     <>
     <nav id='category-navbar'>
     <div>
-        <img src="../../../public/LogoD.png" alt="Logo aplicación" className='logo-image'/>
+    <LightBulb position={{ left: "-110px" }} tipo="logo-icon"/>
         </div>
     <div className='items-navbar'>
-    <Link to="/categories" className={location.pathname==="/categories"?"inactive":"active"}>Categorías</Link>
-    <Link to="/ranking" className="ranking">Ranking</Link>
+      <ul className='nav-menu'>
+        <li className='nav-menu-item'>
+          <Link to="/categories" className=''><button className={`nav-text ${location.pathname==="/categories"?"active":"inactive"}`}>Categorías
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          </button></Link>
+        </li>
+        <li className='nav-menu-item'>
+          <Link to="/ranking" className='' ><button className={`nav-text ${location.pathname==="/ranking"?"active":"inactive"}`}>Ranking</button></Link>        </li>
+      </ul>
     </div>
     <Dropdown user={user}/>
     

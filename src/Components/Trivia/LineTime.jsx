@@ -1,8 +1,9 @@
-import  { useEffect } from 'react'
+import  { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import '../../css/LineTime.css'
 
-export const LineTime = ({timeLeft}) => {
+export const LineTime = ({timeLeft, timeTotal}) => {
+  const [timerRender, setTimerRender] = useState([]);
 
     useEffect(() => {
       let intervalId;
@@ -17,31 +18,28 @@ export const LineTime = ({timeLeft}) => {
       },1000)
       return () => clearInterval(intervalId);
     }, [timeLeft])
+
+    useEffect(()=>{
+      setTimerRender(renderTimers());
+    },[timeTotal])
     
+    const renderTimers = () => {
+      let timers = [];
+      for (let i = 1; i <= timeTotal; i++) {
+        const timerClass = i === 1 ? 'start' : i === timeTotal ? 'end':'';
+  
+        timers.push(
+          <div key={`timer-${i}`} id={`timer-${i}`} className={timerClass} />
+        );
+      }
+      return timers;
+  
+    };
     
   return (
     <>
     <main className="linetime">
-    <div id='timer-1' className='start'/>
-    <div id='timer-2'/>
-    <div id='timer-3'/>
-    <div id='timer-4'/>
-    <div id='timer-5'/>
-    <div id='timer-6'/>
-    <div id='timer-7'/>
-    <div id='timer-8'/>
-    <div id='timer-9'/>
-    <div id='timer-10'/>
-    <div id='timer-11'/>
-    <div id='timer-12'/>
-    <div id='timer-13'/>
-    <div id='timer-14'/>
-    <div id='timer-15'/>
-    <div id='timer-16'/>
-    <div id='timer-17'/>
-    <div id='timer-18'/>
-    <div id='timer-19'/>
-    <div id='timer-20' className='end'/>
+      {timerRender}
     </main>
     </>  
   )

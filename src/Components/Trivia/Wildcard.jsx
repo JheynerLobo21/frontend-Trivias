@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import '../../css/wildcard.css'
-export function Wildcard({ wildcard,funcionalidad }) {
+import { restarComodin } from '../../services/Wildcard';
+
+export function Wildcard({ wildcard,funcionalidad,comodinUse }) {
 
     const handleClick = async () => {
-        if(wildcard.amount>0){
-            funcionalidad()
-            //const response = await restarComodin(wildcard.idUserWildcard);
+        if(parseInt(wildcard.amount)>0){
+            let used=funcionalidad()
+            let status='';
+            used?console.log("No se puede usar"):status=await restarComodin(wildcard.idUserWildcard);
+            status===204?comodinUse():'';
+            console.log(204)
 
         }else{
             alert("no tienes comodines")
