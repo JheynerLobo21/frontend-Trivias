@@ -5,11 +5,13 @@ import { Timer } from './Timer';
 import PropTypes from 'prop-types';
 import '../../css/Trivia.css'
 
-export const Question = ({ saveScore, user, data, question, options, correctAnswer, handleAnswer, score, category }) => {
+export const Question = ({ saveScore, user, data, time, setTimeLeft, question, options, correctAnswer, handleAnswer, score, category }) => {
     const [selectedOption, setSelectedOption] = useState('');
-    const [timeLeft, setTimeLeft] = useState(20);
+    const [timeLeft, setTimeLeftInterno] = useState(time);
     const [clickOption, setClickOption] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [timeTotal, setTimeTotal] = useState(time);
+
 
 
     useEffect(() => {
@@ -17,6 +19,7 @@ export const Question = ({ saveScore, user, data, question, options, correctAnsw
 
             intervalId = setInterval(() => {
                 if (timeLeft > 0) {
+                    setTimeLeftInterno(timeLeft - 1);
                     setTimeLeft(timeLeft - 1);
                 } else {
                     saveScore(user.idUser,data.idSubCategory,score)
@@ -35,6 +38,10 @@ export const Question = ({ saveScore, user, data, question, options, correctAnsw
         setClickOption(true)
     };
 
+    useEffect(() => {
+        setTimeLeftInterno(time); // Sincroniza el estado interno cuando el tiempo cambia
+    }, [time]);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(selectedOption.answer)
@@ -48,7 +55,10 @@ export const Question = ({ saveScore, user, data, question, options, correctAnsw
         <>
         <div className='question-trivia'>
             <p className='trivia-description'>{question}</p>
-            <LineTime timeLeft={timeLeft}/>
+            <LineTime 
+            timeLeft={timeLeft}
+            timeTotal={timeTotal}
+            />
             <Timer timeLeft={timeLeft} />
             <form className="form-answers" onSubmit={handleSubmit}>
                 <div className='options'>

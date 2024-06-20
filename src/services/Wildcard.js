@@ -15,3 +15,19 @@ export const getWildcards = async (idUser)=>{
         console.log(err);
     }
 }
+
+export const restarComodin = async (idUserWildcard)=>{
+    try{
+        const question= await fetch(servidorAPI+ "api/public/User/Wildcard/Subtract/"+idUserWildcard, {
+            method:"PATCH",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        });
+        //console.log(await question.json());
+        return question.status;
+    }catch(err){
+        console.log(err);
+    }
+}
