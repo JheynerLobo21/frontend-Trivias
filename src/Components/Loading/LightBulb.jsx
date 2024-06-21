@@ -1,4 +1,3 @@
-import "../../css/lightBulb.css";
 import "../../css/Trivia.css";
 
 export function LightBulb({position, tipo}) {

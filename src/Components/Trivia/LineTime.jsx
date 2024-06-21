@@ -20,16 +20,20 @@ export const LineTime = ({timeLeft, timeTotal}) => {
     }, [timeLeft])
 
     useEffect(()=>{
+      setTimerRender(null);
       setTimerRender(renderTimers());
+
     },[timeTotal])
     
     const renderTimers = () => {
       let timers = [];
       for (let i = 1; i <= timeTotal; i++) {
         const timerClass = i === 1 ? 'start' : i === timeTotal ? 'end':'';
-  
+        const timer= document.getElementById(`timer-${i}`)
+        timer?timer.style.backgroundColor='rgb(60, 173, 60)':''
+
         timers.push(
-          <div key={`timer-${i}`} id={`timer-${i}`} className={timerClass} />
+          <div key={`timer-${i}`} id={`timer-${i}`} style={{backgroundColor:'rgb(60, 173, 60)'}} className={timerClass} />
         );
       }
       return timers;

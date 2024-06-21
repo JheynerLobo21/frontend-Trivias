@@ -1,6 +1,7 @@
 import {helpHttp} from '../../helpers/helpHttp';
 import { useEffect, useState } from 'react';
 import '../../css/listCategories.css';
+import '../../css/app.css'
 import { Link } from 'react-router-dom';
 import {colors, imagenes, servidorAPI} from '../../constants'
 import { useAuth0 } from "@auth0/auth0-react";
@@ -81,8 +82,8 @@ export const ListCategories =  () => {
                            
                         >
                             <section className='category-section'>
-                                <img src={getImg(imagenes,category.idCategory)} alt="img-category" />
-                                <div className={`trapeze-${index}`} style={{ borderBottom: `170px solid ${getColor(colors, category.idCategory)}`, padding: 0, width: "150px", height: "0", borderLeft: "60px solid transparent", borderRight: "60px solid transparent", zIndex: "-1", position: "absolute" }} />
+                                <img className="img-category" src={getImg(imagenes,category.idCategory)} alt="img-category" />
+                                <div className={`trapeze-${index} trap`} style={{ borderBottom: `170px solid ${getColor(colors, category.idCategory)}`}} />
                             </section>
                             <p className="descriptivo" style={{textTransform:'uppercase'}}>{categories[index].name}</p>
                         </Link>

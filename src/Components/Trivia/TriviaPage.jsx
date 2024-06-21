@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Score } from "./Score";
 import "../../css/Trivia.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Navbar } from "../Categories/Navbar";
+import { Navbar } from "../Navbar/Navbar";
 import { WildcardsBar } from "./WildcardsBar";
 import { IsLoading } from "../Loading/IsLoading";
 
@@ -17,6 +17,7 @@ export const TriviaPage = () => {
   const [jump, setJump] = useState(0);
   const [shield, setShield] = useState(false);
   const [timeLeft, setTimeLeft] = useState(20);
+  const [timeTotal, setTimeTotal] = useState(20);
   const [showModal, setShowModal] = useState(false);
   const [question, setQuestion] = useState({});
   const [loading, setLoading] = useState(true);
@@ -47,20 +48,23 @@ export const TriviaPage = () => {
 
 
   const handleAnswer = (isCorrect) => {
-    if (isCorrect) {
-      setScore(score + 1);
-      setTimeLeft(20);
-      setLoading(true);
-    } else {
-      if (shield) {
-        setShield(false);
-        changeQuestion();
-      } else {
-        saveScore(user2.idUser, data.idSubCategory, score);
-        setShowModal(true);
+    setTimeout(()=>{
+      if (isCorrect) {
+        setScore(score + 1);
+        setTimeLeft(20);
         setLoading(true);
+      } else {
+        if (shield) {
+          setShield(false);
+          changeQuestion();
+        } else {
+          saveScore(user2.idUser, data.idSubCategory, score);
+          setShowModal(true);
+          setLoading(true);
+        }
       }
-    }
+    },2000)
+    
   };
 
   const changeQuestion = () => {
@@ -103,6 +107,7 @@ export const TriviaPage = () => {
 
   const addTime = () => {
     setTimeLeft(timeLeft+10);
+    setTimeTotal(timeLeft+10);
   };
 
   return (
@@ -134,6 +139,7 @@ export const TriviaPage = () => {
               )}
               handleAnswer={handleAnswer}
               time={timeLeft}
+              timeTotal={timeTotal}
               score={score}
               category={category}
               user={user2}

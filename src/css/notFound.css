@@ -1,0 +1,233 @@
+.notFound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Open Sans", Helvetica, arial, sans-serif;
+
+}
+
+.cursor-h{
+    width: 100%;
+    height: 100%;
+    cursor: url('../assets/martillo.svg') 0 0,pointer;
+}
+
+
+.frameLightBulb {
+    position: absolute;
+    top: 39%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    margin-top: -200px;
+    margin-left: -200px;
+    border-radius: 2px;
+      overflow: none;
+      cursor: url('../assets/martillo.svg') 6 6,pointer;
+
+  }
+
+  
+  #bulb-breacked {
+      position: absolute;
+      z-index: 2;
+      top: 9%;
+      left: 25.98%;
+      width: 200px;
+      height: 200px;
+      fill: #fff;
+      transition: all .5s ease-in-out;
+      cursor: url('../assets/magic.svg') 6 6,pointer;
+      
+      &:hover {
+          fill: #FFF35C;
+      }
+  }
+  .lightning-bolt {
+    position: absolute;
+    left: 50%;
+    top:-3%;
+    width: 50px;
+    height: 178px;
+    z-index: 2;
+    transform: rotate(40deg);
+
+
+    background-color: #2531aa;
+    clip-path: polygon(
+        50% 0%, 
+        60% 20%, 
+        80% 20%, 
+        70% 50%, 
+        90% 50%, 
+        30% 100%, 
+        40% 70%, 
+        20% 70%, 
+        30% 40%, 
+        10% 40%
+    );
+    transition: all 1s ease-in-out;
+
+}
+
+    #bulb-breacked:hover ~ .lightning-bolt, #bulb-breacked:focus ~ .lightning-bolt{
+        width: 0;
+        transition: all 1 ease-in-out;
+    }
+  #bulb-breacked:hover ~ #glow-breaked, #bulb-breacked:focus ~ #glow-breaked {
+
+    top: 9%;
+    left: 32%;
+    opacity: 1;
+    width: 150px;
+    height: 150px;
+	border-radius: 500px;
+	box-shadow: 0 0 50px 10px #FFF35C;
+	transition: all 1s ease-in-out;
+  }
+  #glow-breaked{
+    position: absolute;
+    
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+  }
+  
+  #base-breacked {
+      position: absolute;
+      top: 60%;
+      left: 39.5%;
+      width: 90px;
+      height: 85px;
+      fill: #fff;
+    z-index:1;
+    cursor: url('../assets/magic.svg') 6 15,pointer;
+
+  }
+  .label4-1{
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    z-index: 3;
+    font-size: 150px;
+    color: white;
+    cursor: url('../assets/martillo.svg') 6 6,pointer;
+
+  }
+  .label4-2{
+    position: absolute;
+    top: 20%;
+    left: 75%;
+    z-index: 3;
+    font-size: 150px;
+    color: white;
+    cursor: url('../assets/martillo.svg') 6 6,pointer;
+  }
+
+.notFound-message{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top:60%;
+    cursor: url('../assets/martillo.svg') 6 6,pointer;
+
+}
+
+
+.oops{
+    font-size:80px;
+    color: yellow;
+    cursor: url('../assets/martillo.svg') 6 6,pointer;
+
+}
+
+.menssage{
+    font-size: 20px;
+    color: white;
+    margin-top: 20px;
+    cursor: url('../assets/martillo.svg') 6 6,pointer;
+
+}
+
+.admiral-sign{
+    color: yellow;
+    cursor: url('../assets/martillo.svg') 6 6,pointer;
+
+}
+
+  .btn-5 {
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 50px;    
+    
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 50px;
+  max-width: 250px;
+  margin: 1rem auto;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  }
+
+  .btn-5:after {
+    content: "";
+    width: 0;
+    height: 0;
+    -webkit-transform: rotate(360deg);
+    border-style: solid;
+    border-width: 0 0 0 0;
+    border-color: transparent #3b0c4c transparent transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .btn-5:before {
+    content: "";
+    width: 0;
+    height: 0;
+    -webkit-transform: rotate(360deg);
+    border-style: solid;
+    border-width: 0 0 0 0;
+    border-color: transparent transparent transparent #3b0c4c;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .btn-5:before, .btn-5:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 0 solid;
+    transform: rotate(360deg);
+  }
+  .btn-5:before {
+    bottom: 0;
+    left: 0;
+    border-color: transparent transparent transparent #3b0c4c;
+  }
+  .btn-5:after {
+    top: 0;
+    right: 0;
+    border-color: transparent #3b0c4c transparent transparent;
+  }
+  .btn-5:hover {
+    color: #d8c4df;
+  }
+  .btn-5:hover:before, .btn-5:hover:after {
+    border-width: 50px 262.5px;
+    
+    box-sizing: border-box;
+    transition: 0.5s ease-in-out;
+  }
+  
+
+  .btn-5:before,
+  .btn-5:after {
+  z-index: -1;
+}

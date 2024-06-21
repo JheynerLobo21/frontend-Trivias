@@ -1,9 +1,7 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Login } from './Login/Login.jsx';
 import { Category } from './Categories/Category.jsx';
 import { NotFoundPage } from './NotFoundPage.jsx';
-import { Enlace } from './Enlace.jsx';
+import { Index } from './Index.jsx';
 import { Ranking } from './Ranking/Ranking.jsx';
 import { HomePage } from './HomePage.jsx';
 import { SubCategories } from './Categories/SubCategories.jsx';
@@ -16,15 +14,14 @@ import { IsLoading } from './Loading/IsLoading.jsx';
 export  const App = () => {
   return (
     <Routes>
-      <Route  path="/" element={<Enlace />} />
-      {/* <Route path="/login" element={<AuthenticationGuard component={Login} />} /> */}
+      <Route  path="/" element={<Index />} />
       <Route path="/categories" element={<AuthenticationGuard component={Category} />} />
       <Route path="/categories/:cat" element={<AuthenticationGuard component={SubCategories}/>} />
       <Route path="/categories/:cat/:sub" element={<AuthenticationGuard component={TriviaPage}/>} />
       <Route path="/ranking" element={<Ranking />} />
       <Route path='/homePage' element={<AuthenticationGuard component={HomePage}/>}></Route>
       <Route path="/callback" element={<CallbackPage />} />
-      <Route path="*" element={<HomePage />} />
+      <Route path="*" element={<NotFoundPage />} />
       <Route path="/isLoading" element={<IsLoading />} />
     </Routes>
   );

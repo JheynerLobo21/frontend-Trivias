@@ -1,5 +1,4 @@
 import "../../css/pacman.scss";
-import "../../css/lightBulb.css";
 import { LightBulb } from "./LightBulb";
 
 export function Pacman() {

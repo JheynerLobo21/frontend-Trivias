@@ -3,16 +3,15 @@ import { LineTime } from './LineTime';
 import { Link } from 'react-router-dom';
 import { Timer } from './Timer';
 import PropTypes from 'prop-types';
+import { colors } from '../../constants';
 import '../../css/Trivia.css'
 
-export const Question = ({ saveScore, user, data, time, setTimeLeft, question, options, correctAnswer, handleAnswer, score, category }) => {
+export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, question, options, correctAnswer, handleAnswer, score, category }) => {
     const [selectedOption, setSelectedOption] = useState('');
     const [timeLeft, setTimeLeftInterno] = useState(time);
-    const [clickOption, setClickOption] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [timeTotal, setTimeTotal] = useState(time);
 
-
+    const category2=JSON.parse(localStorage.getItem('category'));
 
     useEffect(() => {
         let intervalId;
@@ -35,7 +34,6 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, question, o
 
      const handleClick = (option) => {
         setSelectedOption(option);
-        setClickOption(true)
     };
 
     useEffect(() => {
@@ -46,10 +44,12 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, question, o
         event.preventDefault();
         console.log(selectedOption.answer)
         console.log(correctAnswer.answer)
-        const response= document.getElementById("responded")
+        const response= document.getElementById(selectedOption.answer)
+        const response2= document.getElementsByName('option')
+        selectedOption.correct?response.classList.add("correct"): response.classList.add("wrong")
+        response2.forEach(button => button.id!=selectedOption.answer?button.disabled = true:'');
         console.log(selectedOption.correct)
         handleAnswer(selectedOption.correct);
-        selectedOption.correct?response.style.backgroundColor="green": response.style.backgroundColor="red"
     };
     return (
         <>
@@ -63,16 +63,18 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, question, o
             <form className="form-answers" onSubmit={handleSubmit}>
                 <div className='options'>
                 {options.map((option, index) => (
+                    <div key={index} className="border-bottom">
                     <button
                     type='submit'
-                    key={index}
                     style={{ marginRight: '10px' }}
                     className='question-button'
-                    id={clickOption?"responded":""}
+                    id={option.answer}
+                    name='option'
                     onClick={() => handleClick(option)}
                 >
                     {option.answer}
                 </button>
+                </div>
                 ))}
                 </div>
             </form>

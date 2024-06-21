@@ -1,6 +1,6 @@
 import  { useState } from 'react'
 import '../../css/subcategories.css'
-import { Navbar } from './Navbar'
+import { Navbar } from '../Navbar/Navbar'
 import {OptionsSubcategories} from './OptionsSubcategories'
 import { useAuth0 } from '@auth0/auth0-react'
 import { CallbackPage } from '../Auth0/CallbackPage'

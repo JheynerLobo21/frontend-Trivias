@@ -1,6 +1,6 @@
 [id*=timer]{
-    background-color: rgb(24, 243, 24);
-    width: 3.8vh;
+    background-color: rgb(60, 173, 60);
+    width: 10vh;
     height: 1.5vh;
 }
 
@@ -24,6 +24,7 @@
     justify-content: center;
     height: fit-content;
     margin-bottom: 8px;
+    padding: 0 17px;
 }
 
 .divtime{

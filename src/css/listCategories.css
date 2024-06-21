@@ -25,19 +25,16 @@
     position: relative;
 }
 
-.trapeze-0,
-.trapeze-2,
-.trapeze-4,
-.trapeze-6 {
-    transform: rotate(180deg);
-}
-
 img {
     width: 150px;
     height: 150px;
     position: relative;
     z-index: 1;
     padding: auto;
+}
+
+.img-category{
+    position: absolute;
 }
 
 .descriptivo {
@@ -47,9 +44,61 @@ img {
     z-index: 1; 
 }
 
-.trapeze-0:hover{
+
+.trap {
+    padding: 0;
     width: 150px;
-    height: 150px;
-    background-color:brown ;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    z-index: -1;
+    position: relative;
 }
 
+.category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Aplicar transformaciones iniciales */
+.trapeze-0,
+.trapeze-2,
+.trapeze-4,
+.trapeze-6 {
+    transform: rotate(180deg);
+    transition: all .5s ease-in-out;
+
+}
+
+.trapeze-1,
+.trapeze-3,
+.trapeze-5,
+.trapeze-7 {
+    transform: rotate(0deg);
+    transition: all .5s ease-in-out;
+
+}
+
+/* Aplicar rotación inversa al hacer hover en trapecios individuales */
+.category-section:hover .trapeze-0,
+.category-section:hover .trapeze-2,
+.category-section:hover .trapeze-4,
+.category-section:hover .trapeze-6 {
+    transform: rotate(0deg);
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+    width: 200px;
+    transition: all .5s ease-in-out;
+
+}
+.category-section:hover .trapeze-1,
+.category-section:hover .trapeze-3,
+.category-section:hover .trapeze-5,
+.category-section:hover .trapeze-7 {
+    transform: rotate(180deg);
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+    width: 200px;
+    transition: all .5s ease-in-out;
+}

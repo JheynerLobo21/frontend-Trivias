@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import {Navbar} from './Navbar.jsx'
+import {Navbar} from '../Navbar/Navbar'
 import '../../css/categories.css'
 import { ListCategories } from './ListCategories.jsx'
 import { useAuth0 } from '@auth0/auth0-react'
