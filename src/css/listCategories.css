@@ -53,3 +53,10 @@ img {
     background-color:brown ;
 }
 
+@media (max-width:708px){
+    .categories{
+        width: 100%;
+        grid-template-columns: none;
+    }
+}
+

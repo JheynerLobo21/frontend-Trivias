@@ -23,7 +23,8 @@ export const Navbar = ({user}) => {
           </button></Link>
         </li>
         <li className='nav-menu-item'>
-          <Link to="/ranking" className='' ><button className={`nav-text ${location.pathname==="/ranking"?"active":"inactive"}`}>Ranking</button></Link>        </li>
+          <Link to="/ranking" className='' ><button className={`nav-text ${location.pathname==="/ranking"?"active":"inactive"}`}>Ranking</button></Link>        
+          </li>
       </ul>
     </div>
     <Dropdown user={user}/>

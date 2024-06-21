@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Question } from "./Question";
 import { triviaData, saveScore } from "../../services/TriviaData";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Score } from "./Score";
 import "../../css/Trivia.css";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -26,6 +26,7 @@ export const TriviaPage = () => {
   );
   const user2 = JSON.parse(localStorage.getItem("usuario"));
   const { user } = useAuth0();
+  const navigate = useNavigate(); // Hook de navegación
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +46,6 @@ export const TriviaPage = () => {
     fetchData();
   }, [score, data.idSubCategory, data.dificultad, jump]);
 
-
   const handleAnswer = (isCorrect) => {
     if (isCorrect) {
       setScore(score + 1);
@@ -57,8 +57,9 @@ export const TriviaPage = () => {
         changeQuestion();
       } else {
         saveScore(user2.idUser, data.idSubCategory, score);
-        setShowModal(true);
         setLoading(true);
+        const scoreTotal = localStorage.setItem("scoreTotal", score);
+        navigate('/Lost'); // Redirigir a la ruta /Lost
       }
     }
   };
@@ -102,9 +103,9 @@ export const TriviaPage = () => {
   };
 
   const addTime = () => {
-    setTimeLeft(timeLeft+10);
+    setTimeLeft(timeLeft + 10);
   };
-
+  
   return (
     <>
       <Navbar user={user} />
@@ -152,7 +153,7 @@ export const TriviaPage = () => {
               </Link>{" "}
               <h2>Respuesta equivocada</h2>
               <p>¡Inténtalo de nuevo!</p>
-              <Link to={`/categories/${category}`}>
+              <Link to={`/Lost`}>
                 <button>Salir</button>
               </Link>
               <button>Volver a jugar</button>
