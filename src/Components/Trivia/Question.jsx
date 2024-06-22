@@ -12,8 +12,6 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, question, o
     const [showModal, setShowModal] = useState(false);
     const [timeTotal, setTimeTotal] = useState(time);
 
-
-
     useEffect(() => {
         let intervalId;
 
