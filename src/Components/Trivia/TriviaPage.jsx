@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Question } from "./Question";
 import { triviaData, saveScore } from "../../services/TriviaData";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Score } from "./Score";
 import "../../css/Trivia.css";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -18,7 +18,6 @@ export const TriviaPage = () => {
   const [shield, setShield] = useState(false);
   const [timeLeft, setTimeLeft] = useState(20);
   const [timeTotal, setTimeTotal] = useState(20);
-  const [showModal, setShowModal] = useState(false);
   const [question, setQuestion] = useState({});
   const [loading, setLoading] = useState(true);
   const data = JSON.parse(localStorage.getItem("data"));
@@ -27,6 +26,7 @@ export const TriviaPage = () => {
   );
   const user2 = JSON.parse(localStorage.getItem("usuario"));
   const { user } = useAuth0();
+  const navigate = useNavigate(); // Hook de navegación
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +46,6 @@ export const TriviaPage = () => {
     fetchData();
   }, [score, data.idSubCategory, data.dificultad, jump]);
 
-
   const handleAnswer = (isCorrect) => {
     setTimeout(()=>{
       if (isCorrect) {
@@ -59,8 +58,9 @@ export const TriviaPage = () => {
           changeQuestion();
         } else {
           saveScore(user2.idUser, data.idSubCategory, score);
-          setShowModal(true);
           setLoading(true);
+          localStorage.setItem("scoreTotal", score);
+          navigate('/Lost'); 
         }
       }
     },2000)
@@ -109,13 +109,18 @@ export const TriviaPage = () => {
     setTimeLeft(timeLeft+10);
     setTimeTotal(timeLeft+10);
   };
-
+  
   return (
     <>
       <Navbar user={user} />
-
+      <div className="container-general">
       <main className="main-trivia">
-        <div className="main-wildcards">
+        
+        <section className="section-centered">
+          
+          <h1 className="centered">{subcategory}</h1>
+
+          <div className="main-wildcards">
           <WildcardsBar
             idUser={user2.idUser}
             changeQuestion={changeQuestion}
@@ -124,8 +129,7 @@ export const TriviaPage = () => {
             addTime={addTime}
           />
         </div>
-        <section className="section-centered">
-          <h1 className="centered">{subcategory}</h1>
+        
           <Score score={score} />
 
           {loading ? (
@@ -149,23 +153,8 @@ export const TriviaPage = () => {
             />
           )}
         </section>
-
-        {showModal && (
-          <div className="modal">
-            <div className="modal-content">
-              <Link to={`/categories/${category}`}>
-                <span className="close-button">&times;</span>
-              </Link>{" "}
-              <h2>Respuesta equivocada</h2>
-              <p>¡Inténtalo de nuevo!</p>
-              <Link to={`/categories/${category}`}>
-                <button>Salir</button>
-              </Link>
-              <button>Volver a jugar</button>
-            </div>
-          </div>
-        )}
       </main>
+      </div>
     </>
   );
 };

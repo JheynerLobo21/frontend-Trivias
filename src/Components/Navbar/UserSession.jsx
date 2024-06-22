@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import '../../css/navbar.css';
+import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
-export const Dropdown = ({user}) => {
-  const{picture, name} =user;
+export const Dropdown = ({ user }) => {
+  const { picture, name } = user;
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const { logout } = useAuth0();
@@ -28,27 +29,38 @@ export const Dropdown = ({user}) => {
 
   return (
     <>
-    <div ref={dropdownRef} className="dropdown-container">
-      <button onClick={toggleDropdown} className="dropdown-toggle">
+    
+      <button className="dropdown-name">
         {name}
       </button>
+    <div ref={dropdownRef} className="dropdown-container">
+    <button className="dropdown-toggle" onClick={toggleDropdown}>
+        <img src={picture} alt="foto perfil" className='fotoperfil' />
+      </button>
+      
       {isOpen && (
         <div className="dropdown-menu">
+          <label className="dropdown-name2">{name}</label>
+          <hr className='hr-name'/>
           <label className="dropdown-option">Cambiar contraseña</label>
           <hr />
-
+          <Link to={"/categories"}>
+            <label id="items-name" className="categories">Categorías</label>
+          </Link>
+          <hr />
+          <Link to={"/ranking"}>
+            <label id="items-name" className="ranking">Ranking</label>
+          </Link>
+          <hr className='hr-menu' />
           <label
-      onClick={() =>
-        logout({ logoutParams: { returnTo: window.location.origin } })
-      }
-      className="inline-block px-4 py-3 text-sm font-semibold text-center text-gray-500 transition duration-100 rounded-lg outline-none ring-indigo-300 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base"
-    >
-      Log Out
-    </label>
+            onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+            className="logout"
+          >
+            Log Out
+          </label>
         </div>
       )}
-    </div>
-    <img src={picture} alt="foto perfil" className='fotoperfil'/>
+      </div>
     </>
   );
 };

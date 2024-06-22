@@ -27,16 +27,19 @@ export const SubCategories = () => {
   return (
     <>
     <Navbar user={user}/>
-    <hr />
+    <div className='container-general'>
+    <div className='generalknowledge'>
     <h1 className='title-category'>{categoryTitle}</h1>
-    <main className='generalknowledge'>
-      <aside className='descriptionsubcategory' id='descriptionsubcategory'>
+    <main className=''>
+    <aside className='descriptionsubcategory' id='descriptionsubcategory'>
         <DescryptionSubcategory btnSubcategory={btnSubcategory}/>
       </aside>
       <aside className='listsubcategories' id='listsubcategories'>
       <OptionsSubcategories categoryName={category.name} btnSubcategory onBtnClick={handleBtnClick}/>
-      </aside>
+      </aside>      
     </main>
+    </div>
+    </div>
     </>
   )
 }

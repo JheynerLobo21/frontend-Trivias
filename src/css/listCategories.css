@@ -79,8 +79,6 @@ img {
     transition: all .5s ease-in-out;
 
 }
-
-/* Aplicar rotación inversa al hacer hover en trapecios individuales */
 .category-section:hover .trapeze-0,
 .category-section:hover .trapeze-2,
 .category-section:hover .trapeze-4,
@@ -101,4 +99,10 @@ img {
     border-right: 0px solid transparent;
     width: 200px;
     transition: all .5s ease-in-out;
+}
+@media (max-width:708px){
+    .categories{
+        width: 100%;
+        grid-template-columns: none;
+    }
 }

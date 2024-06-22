@@ -36,9 +36,8 @@ export const Category = () => {
   return (
     <>
       
-      <div className='main-category'>
       <Navbar user={user}/>
-      <hr />
+      <div className='container-general'>
       <div className='main-category'>
         <h1 className='title'>TRIVIATON</h1>
         <div className='main-category-scroll'>
@@ -46,6 +45,7 @@ export const Category = () => {
         </div>
       </div>
       </div>
+      
     </>
   )
 }

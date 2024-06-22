@@ -25,10 +25,14 @@
 
 .main-category {
     max-height: 105vh;
-    overflow-y: auto;
   }
   
   .main-category-scroll {
     padding: 20px; 
     scroll-behavior: smooth;
+  }
+  .generalknowledge{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }

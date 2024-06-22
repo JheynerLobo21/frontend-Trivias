@@ -311,6 +311,9 @@ main{
   color: #4169E1;
 }
 
+.list-selected{
+  width: 45%;
+}
 .img-carrusel{
   float: inline-start;
   width: 100%;
@@ -344,4 +347,16 @@ select{
 
 section{
   margin: 0;
+}
+
+@media (max-width:768px){
+  .listsubcategories{
+    width: 70%;
+  }
+}
+
+@media (max-width:480px){
+  .listsubcategories{
+    width: 100%;
+  }
 }

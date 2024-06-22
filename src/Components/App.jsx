@@ -9,6 +9,7 @@ import { CallbackPage } from './Auth0/CallbackPage.tsx';
 import { AuthenticationGuard } from './Auth0/AuthenticationGuard.tsx';
 import { TriviaPage } from './Trivia/TriviaPage.jsx';
 import { IsLoading } from './Loading/IsLoading.jsx';
+import { Failed } from './Lost/Failed.jsx';
 
 
 export  const App = () => {
@@ -21,6 +22,7 @@ export  const App = () => {
       <Route path="/ranking" element={<Ranking />} />
       <Route path='/homePage' element={<AuthenticationGuard component={HomePage}/>}></Route>
       <Route path="/callback" element={<CallbackPage />} />
+      <Route path="/Lost" element={<Failed/>} />
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/isLoading" element={<IsLoading />} />
     </Routes>
