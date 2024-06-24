@@ -66,7 +66,7 @@
 }
 
 .cloud {
-    width: 100px;
+    width: 150px;
     height: 40px;
     background-color: #fff;
     border-radius: 50px;
@@ -81,7 +81,7 @@
     }
 
     &::before {
-        width: 60px;
+        width: 80px;
         height: 60px;
         top: -30px;
         left: 10px;
@@ -89,13 +89,14 @@
     }
 
     &::after {
-        width: 40px;
-        height: 40px;
-        top: -20px;
-        right: 10px;
-        border-radius: 50%;
+       width: 60px;
+       height: 50px;
+       top: -20px;
+       right: 10px;
+       border-radius: 50%;
     }
 }
+
 
 .score-img{
     width: fit-content;
@@ -105,16 +106,38 @@
 .scoreTotal {
     position: absolute;
     z-index: 2;
-    color: #25aa2c;
-    top: 190px;
-    left: 465px;
-    font-size: 35px;
+    color: #2531aa;
+    top: -38px;
+    left: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.circle-small{
+    width: 10px;
+    height: 10px;
+    margin-top: 45px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    margin-left: 20px;
+}
+
+.circle-medium{
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    margin-top: 30px;
+    margin-left: 30px;
 }
 
 .einstein {
     position: absolute;
-    top: 32%;
-    right: 55%;
+    right: 53%;
     width: 256px;
     height: auto;
     z-index: -1;
@@ -126,7 +149,8 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    margin-left: 2%;
+    margin-left: 50px;
+    margin-top: -50px;
 }
 
 .wrapper,

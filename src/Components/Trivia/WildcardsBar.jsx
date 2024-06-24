@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Wildcard } from './Wildcard';
-import { getWildcards } from '../../services/Wildcard';
+import { getWildcardsUser } from '../../services/Wildcard';
 import PropTypes from 'prop-types';
 
 
@@ -13,12 +13,12 @@ export function WildcardsBar({idUser, changeQuestion, activeShield, delectedAnwe
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await getWildcards(idUser);
+                const response = await getWildcardsUser(idUser);
                 setWildCards(response);
                 console.log(response);
                 return response;
             } catch (error) {
-                console.error('Error fetching trivia data getWildcards:', error);
+                console.error('Error fetching trivia data getWildcardsUser:', error);
             }
         };
     

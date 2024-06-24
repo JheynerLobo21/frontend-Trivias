@@ -56,7 +56,7 @@ export const Dropdown = ({ user }) => {
             onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
             className="logout"
           >
-            Log Out
+            Cerrar sesión
           </label>
         </div>
       )}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LightBulb } from "../Loading/LightBulb";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -7,14 +7,33 @@ import { Dropdown } from "./UserSession";
 export const NavbarHome = () => {
   const { user, isAuthenticated } = useAuth0();
   const [activeButton, setActiveButton] = useState("inicio");
+  const [isScrolled, setIsScrolled] = useState(false);
+
 
   const handleButtonClick = (buttonId) => {
     setActiveButton(buttonId);
   };
 
+  useEffect(() => {
+    const rootElement = document.getElementById('root');
+
+    const handleScroll = () => {
+      if (rootElement.scrollTop > 200) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    rootElement.addEventListener('scroll', handleScroll);
+    return () => {
+      rootElement.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <nav id="category-navbar" className="home-nav">
+      <nav id="category-navbar" className={`home-nav ${isScrolled ? 'navbar-dark' : 'navbar-transparent'}`}>
         <div>
           <Link to="/" className="">
             <LightBulb position={{ left: "-110px" }} tipo="logo-icon" />

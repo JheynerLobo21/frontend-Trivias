@@ -206,15 +206,16 @@
     text-decoration: none;
   }
 
-  .dropdown-menu label{
+  .dropdown-menu label:not(.dropdown-name2){
     cursor: pointer;
     width: fit-content;
     font-size: large;
   }
 
-  .dropdown-menu label:not(.logout):hover{
+  .dropdown-menu label:not(.logout, .dropdown-name2):hover{
     color: #2531AA;
   }
+
 
   .logout:hover{
     color: #e41414;
@@ -228,19 +229,26 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-@media (min-width:768px){
-  .dropdown-name2{
-    display: none;
-  }
-  .hr-name{
+
+
+@media (max-width:900px){
+  .dropdown-name{
     display: none;
   }
 }
-@media (max-width:768px){
-    .dropdown-name, .nav-menu, #items-name{
-      display: none;
-    }
- 
+
+@media (min-width:900px){
+  .dropdown-name2, .hr-name{
+    display: none;
+  }
 }
+
+@media (max-width:600px){
+  .nav-menu-item{
+    display: none;
+  }
+}
+
+
 
   

@@ -4,6 +4,7 @@ body{
     align-items: center;
     height: 100vh;
     background-color: #2531aa;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 body::-webkit-scrollbar {
@@ -15,7 +16,7 @@ body::-webkit-scrollbar {
  left: 0;
  right: 0;
  bottom: 0;
- overflow-y: auto;
+ overflow-y: none;
  overflow-x: hidden;
  scroll-behavior: smooth;
 
@@ -24,6 +25,11 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+.home-nav{
+    transition: background-color 0.3s ease;
+}
+
+
 .log-in-inicio{
     position: relative;
 }
@@ -31,6 +37,13 @@ body::-webkit-scrollbar {
 .nav-menu-item.log-in-inicio {
     margin-left: auto;
   }
+
+#inicio{
+    padding-top: 80px;
+}
+#tutorial{
+    padding-top: 40px;
+}
 
 .banner{
     display: flex;
@@ -42,19 +55,171 @@ body::-webkit-scrollbar {
     text-align: center;
 }
 
+.pasos{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    margin-top: 100px;
+}
+
+.pasos ul{
+    list-style: none;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+ .doubleCard{
+    position: relative;
+    width:  100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+ }
+
+
+ .cont:hover .doubleCard{
+    transform: rotateY(180deg);
+ }
+
+ .cont:hover{
+    z-index: 100;
+ }
+ .frontCard, .backCard{
+    position: absolute;
+    backface-visibility: hidden;
+    
+ } 
+ .backCard{
+    transform: rotateY(180deg)
+ } 
+
+.foot-rotate{
+    transform: scaleX(-1);
+}
+
+.pasos li{
+    display: flex;
+    width: 200px;
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    z-index: 10;
+    height: 200px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    perspective: 800px;
+}
+.cont{
+    perspective: 400px;
+    width:  350px;
+    height: 200px;
+    left: 25%;
+    top: 15%;
+ }
+
+ .cont:nth-child(1){
+    left: 25%;
+    top: 15%;
+ }
+ 
+ .cont:nth-child(2){
+    left: 55%;
+    top: 30%;
+ }
+
+ .cont:nth-child(3){
+    left: 25%;
+    top: 55%;
+ }
+
+ .cont:nth-child(4){
+    left: 55%;
+    top: 70%;
+ }
+
+ .cont:nth-child(1) .doubleCard{
+    background-color: #fc1a40;
+}
+
+.cont:nth-child(2) .doubleCard{
+    background-color: rgb(11, 153, 58);
+}
+
+.cont:nth-child(3) .doubleCard{
+    background-color: rgb(255, 185, 34);
+}
+
+.cont:nth-child(4) .doubleCard{
+    background-color: rgb(0, 119, 255);
+}
+
+
 .home-tittle{
     font-size: 100px;
     color: yellow;
     margin-top: -50px;
 }
 
+.home-subtittle{
+    font-size: 60px;
+    color: yellow;
+    margin-top: -50px;
+}
 
+
+.card ~ .icon-header{
+    margin: 0 auto;
+}
+
+.card-tuto{
+    width: 40%;
+    height: 200px;
+}
+
+#tutorial .home-description-app{
+    padding: 20px;
+    width: 80%;
+}
 
 .home-text{
     display: flex;
+    justify-content: center;
     flex-direction: column;
     color: white;
     font-size: 30px;
+}
+
+.home-description{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: white;
+    font-size: 30px;
+    max-width: 80%;
+    box-shadow: 0 2px 4px rgba(226, 220, 220, 0.288);
+    margin-top: 35px;
+
+}
+
+.home-bottom{
+    margin: 20px auto ;
 }
 
 .home-img-pc{
@@ -64,6 +229,99 @@ body::-webkit-scrollbar {
 
 .container-general{
     margin-top: 100px;
+}
+
+
+
+.navbar-dark{
+ background-color: #2531aa;
+}
+
+.comodines{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    gap: 10px;
+}
+
+.comodines-list{
+    display: flex;
+    gap:4px
+}
+
+.card{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    left: 0;
+    width: 150px;
+    border-radius: 4px;
+    padding: 8px;
+    height: 250px;
+    background-color: white;
+    transition: 0.4s ease-in-out;
+    flex: 1px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card:nth-child(1){
+    background-color: #fc1a40;
+}
+.card:nth-child(2){
+    background-color: rgb(11, 153, 58);
+}
+.card:nth-child(3){
+    background-color: rgb(255, 185, 34);
+}
+.card:nth-child(4){
+    background-color: rgb(0, 119, 255);
+}
+.card:nth-child(5){
+    background-color: rgb(47, 0, 255);
+}
+.card:hover{
+    flex: 3;
+    font-weight: bold;
+    cursor: pointer;
+    width: 250px;
+}
+
+
+.icon-white{
+    color: white;
+    position: relative;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;  
+    line-height: 50px;
+    margin: 0 auto;
+}
+
+.card:hover .home-description-wildcard {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    transition: opacity 1s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+.home-description-wildcard {
+    position: absolute;
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    margin: 0 auto;
+    text-align: center;
+    transition: opacity 1s ease-in-out, visibility 0.4s ease-in-out;
+    font-size: 20px;
+}
+.card  .icon-header{
+    margin: 0 auto;
 }
 
 @media (max-width:940px){
@@ -83,4 +341,36 @@ body::-webkit-scrollbar {
     }
 }
 
+@media (max-width: 818px) {
+    .comodines-list {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+        width: 100%;
+    }
+    .card {
+        width: 80%;
+        height: 250px; 
+        transition: height 0.4s ease-in-out; 
+        flex-direction: row;
+    }
+    .card:hover {
+        width: 88%;
+        height: 350px;
+    }
+    .home-description-wildcard{
+        width: 70%;
+    }
+    .icon-header{
+        width: 30%;
+    }
 
+    .home-description{
+        flex-direction: column;
+    }
+    .cont:nth-child(2),
+    .cont:nth-child(4){
+        left: 50%;
+    }
+
+}
