@@ -1,0 +1,60 @@
+.loading-frame {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+
+.loading-pacman {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: yellow;
+  border-radius: 50%;
+  -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+          clip-path: polygon(100% 50%, 0 0, 0 100%);
+  animation: chomping 0.5s steps(2, end) infinite;
+}
+
+@keyframes chomping {
+  0% {
+    -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+            clip-path: polygon(100% 50%, 0 0, 0 100%);
+  }
+  50% {
+    -webkit-clip-path: polygon(100% 50%, 25% 0, 25% 100%);
+            clip-path: polygon(100% 50%, 25% 0, 25% 100%);
+  }
+  100% {
+    -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+            clip-path: polygon(100% 50%, 0 0, 0 100%);
+  }
+}
+.loading-dots {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.loading-dot {
+  width: 10px;
+  height: 10px;
+  background: yellow;
+  border-radius: 50%;
+  animation: dot-moving 0.5s linear infinite;
+}
+
+@keyframes dot-moving {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=prueba.css.map */

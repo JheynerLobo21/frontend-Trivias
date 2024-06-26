@@ -155,6 +155,7 @@ body::-webkit-scrollbar {
 
  .cont:nth-child(1) .doubleCard{
     background-color: #fc1a40;
+    
 }
 
 .cont:nth-child(2) .doubleCard{
@@ -368,9 +369,42 @@ body::-webkit-scrollbar {
     .home-description{
         flex-direction: column;
     }
+
     .cont:nth-child(2),
     .cont:nth-child(4){
         left: 50%;
     }
+}
 
+@media (max-width:700px){
+    .cont:nth-child(1),
+    .cont:nth-child(3){
+        left: 20%;
+    }
+    .cont:nth-child(2),
+    .cont:nth-child(4){
+        left: 45%;
+    }
+}
+
+@media (max-width:500px){
+    .cont:nth-child(1),
+    .cont:nth-child(3){
+        left: 15%;
+    }
+    .cont:nth-child(2),
+    .cont:nth-child(4){
+        left: 40%;
+    }
+}
+
+@media (max-width:400px){
+    .cont:nth-child(1),
+    .cont:nth-child(3){
+        left: 5%;
+    }
+    .cont:nth-child(2),
+    .cont:nth-child(4){
+        left: 30%;
+    }
 }

@@ -49,8 +49,7 @@ export const TriviaPage = () => {
   const handleAnswer = (isCorrect) => {
     setTimeout(()=>{
       if (isCorrect) {
-        setScore(score + 1);
-        setTimeLeft(20);
+        setScore(score + 1);      
         setLoading(true);
       } else {
         if (shield) {
@@ -60,9 +59,12 @@ export const TriviaPage = () => {
           saveScore(user2.idUser, data.idSubCategory, score);
           setLoading(true);
           localStorage.setItem("scoreTotal", score);
-          navigate('/Lost'); 
+          localStorage.setItem("pageTrivia", window.location.pathname);
+          navigate('/endGame'); 
         }
       }
+      setTimeLeft(20);
+      setTimeTotal(20);
     },2000)
     
   };

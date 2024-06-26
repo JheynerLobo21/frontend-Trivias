@@ -16,7 +16,7 @@ export const DescryptionSubcategory = ({ btnSubcategory }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = {
-            dificultad: document.getElementById("type-dificults").value,
+            dificultad: document.getElementById("type-difficulty").value,
             idSubCategory: btnSubcategory.idSubCategory
         };
         localStorage.setItem("data", JSON.stringify(data));
@@ -24,7 +24,7 @@ export const DescryptionSubcategory = ({ btnSubcategory }) => {
     };
 
     return (
-        <section>
+        <section className='description-subCategory'>
             <h2 className='title-subcategory'>{!primera?btnSubcategory.name:""}</h2>
             <div className='description-img'>
                 <img src="" alt="" className="img-carrusel"/>
@@ -34,13 +34,13 @@ export const DescryptionSubcategory = ({ btnSubcategory }) => {
             <form onSubmit={handleSubmit}>
                     <p>Selecciona una dificultad de juego</p>
                     <div className='options-dificult'>
-                        <select name="dificult" id="type-dificults" required>
+                        <select name="dificult" id="type-difficulty" required>
                             <option value="">Seleccione...</option>
                             <option value="1">Simio</option>
                             <option value="2">Humano</option>
                             <option value="3">Alien</option>
                         </select>
-                        <button type='submit'>Empezar</button>
+                        <button type='submit' className='startGame'>Empezar</button>
                     </div>
                 </form>
             </div>

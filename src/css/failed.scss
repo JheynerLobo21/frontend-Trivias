@@ -66,12 +66,16 @@
 }
 
 .cloud {
-    width: 150px;
+    width: 200px;
     height: 40px;
     background-color: #fff;
     border-radius: 50px;
     position: relative;
     margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 
     &::before,
     &::after {
@@ -81,39 +85,36 @@
     }
 
     &::before {
-        width: 80px;
-        height: 60px;
-        top: -30px;
+        width: 120px;
+        height: 80px;
+        top: -40px;
         left: 10px;
         border-radius: 50%;
     }
 
     &::after {
-       width: 60px;
-       height: 50px;
-       top: -20px;
-       right: 10px;
-       border-radius: 50%;
+        width: 90px;
+        height: 60px;
+        top: -30px;
+        right: 10px;
+        border-radius: 50%;
     }
 }
 
-
-.score-img{
+.score-img {
     width: fit-content;
     height: fit-content;
 }
 
 .scoreTotal {
-    position: absolute;
     z-index: 2;
     color: #2531aa;
-    top: -38px;
-    left: 10px;
     font-size: 30px;
     text-align: center;
+    margin-top: -0.5px;
 }
 
-.circle-small{
+.circle-small {
     width: 10px;
     height: 10px;
     margin-top: 45px;
@@ -121,16 +122,18 @@
     border-radius: 50%;
     position: absolute;
     z-index: 2;
+    border: 1px solid #000;
     margin-left: 20px;
 }
 
-.circle-medium{
+.circle-medium {
     width: 16px;
     height: 16px;
     background: #fff;
     border-radius: 50%;
     position: absolute;
     z-index: 2;
+    border: 1px solid #000;
     margin-top: 30px;
     margin-left: 30px;
 }

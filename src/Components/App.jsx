@@ -22,7 +22,7 @@ export  const App = () => {
       <Route path="/ranking" element={<Ranking />} />
       <Route path='/homePage' element={<AuthenticationGuard component={HomePage}/>}></Route>
       <Route path="/callback" element={<CallbackPage />} />
-      <Route path="/Lost" element={<Failed/>} />
+      <Route path="/endGame" element={<Failed/>} />
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/isLoading" element={<IsLoading />} />
     </Routes>

@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import "/src/css/failed.scss";
 
 export const Failed = () => {
     const scoreTotal = localStorage.getItem("scoreTotal");
+
     return (
         <>
             <div className="failed">
@@ -14,11 +16,12 @@ export const Failed = () => {
                         <div className="circle-small"></div>
                         <div className="circle-medium"></div>
                         <div className="cloud">
-                            <p className="scoreTotal">{scoreTotal} puntos</p>
+                        <p className="scoreTotal">{scoreTotal} {scoreTotal==1 ? "punto" : "puntos"}</p>
                         </div>
                     </div>
                     <div className="wrappers">
                         <div className="wrapper">
+                            <Link to={localStorage.getItem("pageTrivia")}>
                             <button className="again-play">
                                 VOLVER A JUGAR
                                 <span></span>
@@ -26,8 +29,10 @@ export const Failed = () => {
                                 <span></span>
                                 <span></span>
                             </button>
+                            </Link>
                         </div>
                         <div className="wrapper2">
+                            <Link to="/categories">
                             <button className="again-play w-category">
                                 VOLVER A CATEGORÍAS
                                 <span></span>
@@ -35,6 +40,7 @@ export const Failed = () => {
                                 <span></span>
                                 <span></span>
                             </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
