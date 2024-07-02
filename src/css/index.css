@@ -325,6 +325,76 @@ body::-webkit-scrollbar {
     margin: 0 auto;
 }
 
+.container-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px;
+    background: #fff;
+    border-radius: 4px;
+    max-width: 400px;
+}
+#contacto{
+    padding: 20px 0px;
+    background: #2531aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-contacto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    color: #2531aa;
+    font-weight: bold;
+    font-size: 20px;
+    padding:40px;
+    padding-top: 30px;
+
+}
+
+.form-label{
+    text-align: left;
+    align-self: start;
+    margin-left: 15px;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-menssage-input{
+    max-width: 300px;
+    max-height: 300px;
+    min-width: 300px;
+    min-height: 100px;
+}
+
+.container-form .home-subtittle{
+    margin-top: 0px;
+    color: #2531aa;
+    padding-top: 25px;
+}
+
+.form-input{
+    width: 300px;
+    height: 20px;
+    border-radius:2px;
+    border: 2px solid #2531aa;
+    background: transparent;
+    box-shadow: 0 2px 4px rgba(226, 220, 220, 0.288);
+}
+
+.form-input:focus, .form-input:active{
+    border: 1px solid #2531aa;
+}
+
+
 @media (max-width:940px){
     .banner{
         flex-direction: column;
@@ -408,3 +478,120 @@ body::-webkit-scrollbar {
         left: 30%;
     }
 }
+
+.btn-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--bg);
+
+	&:nth-child(1) {
+		--btn-bg: #da0000;
+		--bg: #f22c3a;
+	}
+	&:nth-child(2) {
+		--btn-bg: #fac300;
+		--bg: #fc6100;
+	}
+}
+
+.btn-container button {
+	--width: 180px;
+	--height: 60px;
+	border: 0;
+	position: relative;
+	min-width: var(--width);
+	min-height: var(--height);
+	border-radius: var(--height);
+	color: #fff;
+	font-family: "Montserrat";
+	font-weight: bold;
+	background: #2531aa;
+	cursor: pointer;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 1rem;
+
+	.text,
+	.icon-container {
+		position: relative;
+		z-index: 2;
+	}
+	.text{
+		display:none;
+        font-size: 20px
+	}
+	
+	
+	
+	.icon-container {
+		--icon-size: 25px;
+		position: relative;
+		width: var(--icon-size);
+		height: var(--icon-size);
+		margin-left: 15px;
+		transition: transform 500ms ease;
+
+		.icon {
+			position: absolute;
+			left: -10px;
+			top: 0;
+            color: #fff;
+			width: var(--icon-size);
+			height: var(--icon-size);
+			transition: transform 500ms ease, opacity 250ms ease;
+
+			&--left {
+				transform: translateX(-200%);
+				opacity: 0;
+			}
+
+			i {
+				width: 100%;
+				height: 100%;
+				fill: #fff;
+			}
+		}
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: var(--btn-bg);
+		border-radius: var(--height);
+		z-index: 1;
+		transition: transform 500ms ease;
+	}
+
+	&:hover {
+		.text{
+		display:block;
+	}
+		&::after {
+			transform: translateX(65%);
+		}
+
+		.icon-container {
+			transform: translateX(125%);
+			.icon {
+				&--left {
+					transform: translateX(0);
+					opacity: 1;
+				}
+				&--right {
+					transform: translateX(200%);
+					opacity: 0;
+				}
+			}
+		}
+	}
+}
+
