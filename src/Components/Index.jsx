@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NavbarHome } from "./Navbar/NavbarHome";
 import { Wildcard } from "./Trivia/Wildcard";
 import { getWildcards } from "../services/Wildcard";
+import { Link } from "react-router-dom";
 
 export const Index = () => {
   const [wildcards, setWildCards] = useState([]);
@@ -31,6 +32,7 @@ export const Index = () => {
             <label className="home-description-app">
               Eleva tus conocimietos al maximo
             </label>
+            <Link to="/categories">
             <button className="again-play w-category home-bottom">
               ¡Jugar ahora!
               <span></span>
@@ -38,6 +40,7 @@ export const Index = () => {
               <span></span>
               <span></span>
             </button>
+            </Link>
           </div>
           <img className="home-img-pc" src="pc1-2.png" alt="imagen-pc" />
         </aside>
@@ -120,20 +123,52 @@ export const Index = () => {
         </aside>
       </section>
       <section id="contacto">
-        <aside className="banner">
-          <div className="card-tuto">
-            <label className="home-subtittle">¿Que es Triviaton?</label>
-            <label className="home-description-app">
-              Una app de trivias diseñada para desafiar tu conocimiento en
-              diversos temas mediante preguntas de opción múltiple. Desde
-              historia y ciencia hasta cultura pop y deportes. ¡Diviértete
-              aprendiendo y alcanza la gloria respondiendo preguntas correctas y
-              acumulando puntos!
-            </label>
-          </div>
-          <div className="card-tuto"></div>
+        <div>
+        <aside className="container-form">
+        <label className="home-subtittle">Contáctanos</label>
+          <form className="form-contacto">
+            <div className="campo">
+            <label htmlFor="email" className="form-label">Email</label>
+            <input type="email" name="email" className="form-input" required/>
+            </div>
+            <div className="campo">
+            <label htmlFor="name" className="form-label">Nombre</label>
+            <input type="text" name="name" className="form-input"/>
+            </div>
+            <div className="campo">
+            <label htmlFor="menssage" className="form-label">Mensaje</label>
+            <textarea name="menssage" className="form-input form-menssage-input" required/>
+            </div>
+            <div className="btn-container">
+	<button>
+		<span className="text">Enviar</span>
+		<div className="icon-container">
+			<div className="icon icon--left">
+        <i className="bi bi-send"></i>
+			</div>
+			<div className="icon icon--right">
+        <i className="bi bi-send"></i>
+			</div>
+		</div>
+	</button>
+</div>
+
+{/*<svg style="display: none;">
+	<symbol id="arrow-right" viewBox="0 0 20 10">
+		<path d="M14.84 0l-1.08 1.06 3.3 3.2H0v1.49h17.05l-3.3 3.2L14.84 10 20 5l-5.16-5z"></path>
+	</symbol>
+</svg>*/}
+        <i style={{display:" none"}} className="bi bi-send"></i>
+
+<div className="support">
+	<a href="https://twitter.com/DevLoop01" target="_blank"><i className="fab fa-twitter-square"></i></a>
+	<a href="https://dribbble.com/devloop01" target="_blank"><i className="fab fa-dribbble"></i></a>
+</div>
+          </form>
         </aside>
-      </section>
+        
+        </div>
+        </section>
     </>
   );
 };

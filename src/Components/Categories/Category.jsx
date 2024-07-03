@@ -19,17 +19,22 @@ export const Category = () => {
               email: user.email
           };
             userbd=await createUser(userbd)
-          console.log(userbd);}
-          localStorage.setItem("usuario",JSON.stringify(userbd))
+          console.log(userbd);
+          userbd.status!=500?localStorage.setItem("usuario",JSON.stringify(userbd.response)):console.log("error entonces no se puede guardar en localstorage")
+        }else{
+          localStorage.setItem("usuario",JSON.stringify(userbd));
+          console.log("ya esta en la bd");
+        }
+
         } catch (error) {
             console.error('Error fetching getUser:', error);
         }
     };
 
     fetchData();
-}, []);
-  //if(userbd)
-  if (isLoading) {
+}, [user.email, user.nickname, user.sub]);
+
+if (isLoading) {
     return <CallbackPage/>;
   }
   if(isAuthenticated){

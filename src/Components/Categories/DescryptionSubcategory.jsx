@@ -3,7 +3,7 @@ import '../../css/subcategories.css';
 
 
 export const DescryptionSubcategory = ({ btnSubcategory }) => {
-    console.log(btnSubcategory)
+    console.log(JSON.parse(localStorage.getItem("usuario")))
     const category = JSON.parse(localStorage.getItem("category"))
     let subcategory="";
     let primera= true;

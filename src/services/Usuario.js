@@ -29,7 +29,12 @@ export const createUser = async (user)=>{
             body:JSON.stringify(user)
         });
         //console.log(await question.json());
-        return await question.json();
+        let response=await question.json();
+        let responsefinal={
+            'response': response,
+            'status': response.status
+        }
+        return responsefinal
     }catch(err){
         console.log(err);
     }

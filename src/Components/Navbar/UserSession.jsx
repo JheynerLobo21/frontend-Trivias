@@ -47,10 +47,10 @@ export const Dropdown = ({ user }) => {
           <Link to={"/categories"}>
             <label id="items-name" className="categories">Categorías</label>
           </Link>
-          <hr />
+          {/*<hr />
           <Link to={"/ranking"}>
             <label id="items-name" className="ranking">Ranking</label>
-          </Link>
+          </Link>*/}
           <hr className='hr-menu' />
           <label
             onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}

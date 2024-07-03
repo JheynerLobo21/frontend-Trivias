@@ -30,12 +30,12 @@ export const SubCategories = () => {
     <div className='container-general'>
     <div className='generalknowledge'>
     <h1 className='title-category'>{categoryTitle}</h1>
-    <main className=''>
+    <main className='subcategories-main'>
     <aside className='descriptionsubcategory' id='descriptionsubcategory'>
         <DescryptionSubcategory btnSubcategory={btnSubcategory}/>
       </aside>
       <aside className='listsubcategories' id='listsubcategories'>
-      <OptionsSubcategories categoryName={category.name} btnSubcategory onBtnClick={handleBtnClick}/>
+        <OptionsSubcategories categoryName={category.name} btnSubcategory onBtnClick={handleBtnClick}/>
       </aside>      
     </main>
     </div>
