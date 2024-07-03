@@ -30,8 +30,6 @@
     height: 1.5vw;
     position: absolute;
     top: 0;
-    right: 0;
-    transform: translate(50%, -50%);  /* Centra el elemento en la esquina */
     color: #fff;
     background-color: green;  /* Ejemplo de fondo para .cantidad */
     border-radius: 50%;  /* Ajusta el radio del borde si lo necesitas */

@@ -5,7 +5,7 @@ import { restarComodin } from "../../services/Wildcard";
 export function Wildcard({ wildcard, funcionalidad, comodinUse }) {
   const handleClick = async () => {
     if (parseInt(wildcard.amount) > 0) {
-      let used = funcionalidad();
+      let used = wildcard.wildcard.name==="Salto"?funcionalidad(true):funcionalidad();
       let status = "";
       used
         ? console.log("No se puede usar")

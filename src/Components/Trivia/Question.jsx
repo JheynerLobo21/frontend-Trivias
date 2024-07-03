@@ -3,7 +3,6 @@ import { LineTime } from './LineTime';
 import { Link } from 'react-router-dom';
 import { Timer } from './Timer';
 import PropTypes from 'prop-types';
-import { colors } from '../../constants';
 import '../../css/Trivia.css'
 
 export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, question, options, correctAnswer, handleAnswer, score, category }) => {
@@ -11,13 +10,11 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, 
     const [timeLeft, setTimeLeftInterno] = useState(time);
     const [showModal, setShowModal] = useState(false);
 
-    const category2=JSON.parse(localStorage.getItem('category'));
-
     useEffect(() => {
         let intervalId;
 
             intervalId = setInterval(() => {
-                if (timeLeft > 0) {
+                if (timeLeft > 0 && selectedOption=='') {
                     setTimeLeftInterno(timeLeft - 1);
                     setTimeLeft(timeLeft - 1);
                 } else {
@@ -57,6 +54,7 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, 
             <p className='trivia-description'>{question}</p>
             <LineTime 
             timeLeft={timeLeft}
+            selectedOption={selectedOption}
             timeTotal={timeTotal}
             />
             <Timer timeLeft={timeLeft} />
@@ -81,7 +79,7 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, 
         </div>
 
         
-        {(timeLeft==0&&showModal) && (
+        {(timeLeft==0 && showModal && selectedOption==='')  && (
                 <div className="modal">
                     <div className="modal-content">
                         <Link to={`/categories/${category}`}>
@@ -133,6 +131,8 @@ Question.propTypes = {
     }).isRequired,
     handleAnswer:PropTypes.func,
     score:PropTypes.number.isRequired,
-    category:PropTypes.string.isRequired
-
+    category:PropTypes.string.isRequired,
+    time:PropTypes.number.isRequired,
+    setTimeLeft:PropTypes.func,
+    timeTotal:PropTypes.number.isRequired,
 };

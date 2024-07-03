@@ -2,13 +2,13 @@ import  { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import '../../css/LineTime.css'
 
-export const LineTime = ({timeLeft, timeTotal}) => {
+export const LineTime = ({timeLeft, timeTotal, selectedOption}) => {
   const [timerRender, setTimerRender] = useState([]);
 
     useEffect(() => {
       let intervalId;
       intervalId=setInterval(() => {
-       if(timeLeft>0){
+       if(timeLeft>0 && selectedOption===''){
         const time= document.getElementById(`timer-${timeLeft}`)
         time.style.backgroundColor="white"
         }

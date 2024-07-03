@@ -20,6 +20,7 @@ export const TriviaPage = () => {
   const [timeTotal, setTimeTotal] = useState(20);
   const [question, setQuestion] = useState({});
   const [loading, setLoading] = useState(true);
+  const [wildcardIcon, setWildcardIcon] = useState(null); 
   const data = JSON.parse(localStorage.getItem("data"));
   const category = decodeURIComponent(
     window.location.pathname.split("/")[2].replace(/-/g, " ")
@@ -51,6 +52,7 @@ export const TriviaPage = () => {
       if (isCorrect) {
         setScore(score + 1);      
         setLoading(true);
+        setShield(false);
       } else {
         if (shield) {
           setShield(false);
@@ -69,23 +71,37 @@ export const TriviaPage = () => {
     
   };
 
-  const changeQuestion = () => {
+  const showWildcardIcon = (iconName) => {
+    setWildcardIcon(iconName);
+    setTimeout(() => {
+      setWildcardIcon(null);
+    }, 2000)
+  };
+
+  const changeQuestion = (jumpComodin) => {
+    setShield(false);
     if (!loading) {
       setJump(jump + 1);
       setTimeLeft(20);
       setLoading(true);
+      jumpComodin?
+      showWildcardIcon("bi bi-skip-end-circle-fill"):"";
       return false;
     } else {
       return true;
     }
   };
+
   const activeShield = () => {
+    !shield?
+    showWildcardIcon("bi bi-shield-fill-check"):showWildcardIcon("Ya está usado"); 
     return shield ? true : setShield(true);
   };
 
   const delectedAnwers = () => {
     let questionSubtract = { ...question, answers: [...question.answers] };
     if (questionSubtract.answers.length > 2) {
+      showWildcardIcon("bi bi-yin-yang");
       let correctAnswer = questionSubtract.answers.find(
         (answer) => answer.correct
       );
@@ -104,12 +120,14 @@ export const TriviaPage = () => {
       setQuestion(questionSubtract);
       return false;
     }
+    showWildcardIcon("Ya está usado")
     return true;
   };
 
   const addTime = () => {
-    setTimeLeft(timeLeft+10);
-    setTimeTotal(timeLeft+10);
+    showWildcardIcon("bi bi-alarm-fill");
+    setTimeLeft(timeLeft + 10);
+    setTimeTotal(timeLeft + 10);
   };
   
   return (
@@ -156,6 +174,15 @@ export const TriviaPage = () => {
           )}
         </section>
       </main>
+      {wildcardIcon==='Ya está usado' ?
+      (<div className="wildcard-text-overlay">
+      <label className="textIconUsed">¡Sólo se puede usar una vez por pregunta!</label>
+    </div>)
+      : wildcardIcon &&(
+        <div className="wildcard-icon-overlay">
+          <i className={`${wildcardIcon} icon-large`}></i>
+        </div>
+      )}
       </div>
     </>
   );
