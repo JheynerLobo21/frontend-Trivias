@@ -8,6 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Navbar } from "../Navbar/Navbar";
 import { WildcardsBar } from "./WildcardsBar";
 import { IsLoading } from "../Loading/IsLoading";
+import { maxQuestions } from "../../constants";
 
 export const TriviaPage = () => {
   const subcategory = decodeURIComponent(
@@ -20,6 +21,7 @@ export const TriviaPage = () => {
   const [timeTotal, setTimeTotal] = useState(20);
   const [question, setQuestion] = useState({});
   const [loading, setLoading] = useState(true);
+  const [historyQuestions, setHistoryQuestions] =useState([]);
   const data = JSON.parse(localStorage.getItem("data"));
   const category = decodeURIComponent(
     window.location.pathname.split("/")[2].replace(/-/g, " ")
@@ -31,8 +33,14 @@ export const TriviaPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await triviaData(data.idSubCategory, data.dificultad);
+        const response = await triviaData(data.idSubCategory, data.dificultad, getStringHistoryQuestion(historyQuestions));
         setQuestion(response);
+        if(historyQuestions.length==maxQuestions){
+          setHistoryQuestions([...historyQuestions.slice(1), response.question])
+        }
+        else{
+          setHistoryQuestions([...historyQuestions, response.question]);
+        }
         console.log(response);
         console.log(question);
         return response;
@@ -45,6 +53,17 @@ export const TriviaPage = () => {
 
     fetchData();
   }, [score, data.idSubCategory, data.dificultad, jump]);
+
+  const getStringHistoryQuestion=(historico)=>{
+    let stringHistory=""
+    for(let i=0;i<historico.length;i++) {
+      stringHistory+=" " +historico[i];
+      if(i+1===historico.length)stringHistory+=".";
+      else stringHistory+=",";
+    }
+    console.log(stringHistory);
+    return stringHistory;
+  }
 
   const handleAnswer = (isCorrect) => {
     setTimeout(()=>{

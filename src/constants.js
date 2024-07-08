@@ -23,3 +23,5 @@ export const imagenes = [
 ];
 
 export const servidorAPI="http://localhost:8104/";
+
+export const maxQuestions=20;
