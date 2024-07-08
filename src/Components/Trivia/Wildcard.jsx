@@ -10,7 +10,7 @@ export function Wildcard({ wildcard, funcionalidad, comodinUse, usuario, stopTim
   const [showModalSecundary, setShowModalSecundary] = useState(false);
   const [countComodin, setCountComodin] = useState(0);
   const [stoppedTime, setStoppedTime]=useState(false);
-  const { user, isAuthenticated} = useAuth0();
+  const { user} = useAuth0();
 
   const handleClick = async () => {
     if (parseInt(wildcard.amount) > 0) {
@@ -40,7 +40,9 @@ export function Wildcard({ wildcard, funcionalidad, comodinUse, usuario, stopTim
       }
       else{
         await restarBombicoins(usuario.idUser, totalCost);
+        await sumarWildcard(wildcard.idUserWildcard, countComodin);
         let userbd= await getUser(user.sub)
+        console.log(userbd)
         localStorage.setItem("usuario", JSON.stringify(userbd))
         setShowModalSecundary(false);
         setStoppedTime(false);
