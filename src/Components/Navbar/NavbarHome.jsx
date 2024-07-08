@@ -14,6 +14,7 @@ export const NavbarHome = () => {
 
   const handleButtonClick = (buttonId) => {
     setActiveButton(buttonId);
+    toggleMenu();
   };
 
   useEffect(() => {
@@ -62,7 +63,7 @@ export const NavbarHome = () => {
             {pathName === "/" && (
               <>
                 <li className="nav-menu-item dropdown-item">
-                  <a href="#inicio" className="">
+                  <a href="#inicio">
                     <button
                       className={`nav-text ${
                         activeButton == "inicio" ? "active" : "inactive"
@@ -179,8 +180,15 @@ export const NavbarHome = () => {
             )}
             {isAuthenticated && isOpen && (
               <>
-                <hr />
-                <li className="nav-menu-item dropdown-item">
+              <div className="user-data name-out">
+                <li className="nav-menu-item dropdown">
+                  <p className="name-user-dropdown">{user.name}</p>
+                </li>
+                <img src={user.picture} alt="foto perfil" className='fotoperfil foto-subcategory' onClick={toggleMenu}/>
+
+                </div>
+                <hr className="hr-cond-small"/>
+                <li className="nav-menu-item dropdown-item logout-item">
                   <a href="#tutorial" className="">
                     <button
                       className={`nav-text ${
@@ -201,6 +209,7 @@ export const NavbarHome = () => {
                     </button>
                   </a>
                 </li>
+                
               </>
             )}
             {isAuthenticated && !isOpen &&(
@@ -209,11 +218,35 @@ export const NavbarHome = () => {
                 <li className="nav-menu-item dropdown">
                   <p className="name-user-dropdown">{user.name}</p>
                 </li>
-                <img src={user.picture} alt="foto perfil" className='fotoperfil foto-subcategory' />
+                <img src={user.picture} alt="foto perfil" className='fotoperfil foto-subcategory' onClick={toggleMenu}/>
+
                 </div>
               </>
             )}
           </ul>
+          {isOpen &&  (
+          <li className="nav-menu-item dropdown-item logout-item2">
+                  <a href="#tutorial" className="">
+                    <button
+                      className={`nav-text ${
+                        activeButton === "tutorial" ? "active" : "inactive"
+                      }`}
+                      onClick={() => handleButtonClick("tutorial")}
+                    >
+                      <label
+                        onClick={() =>
+                          logout({
+                            logoutParams: { returnTo: window.location.origin },
+                          })
+                        }
+                        className="logout2"
+                      >
+                        Cerrar sesión
+                      </label>
+                    </button>
+                  </a>
+                </li>
+                )}
         </div>
       </nav>
     </>

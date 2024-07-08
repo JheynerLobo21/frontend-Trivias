@@ -5,7 +5,7 @@ import { Timer } from './Timer';
 import PropTypes from 'prop-types';
 import '../../css/Trivia.css';
 
-export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, question, options, handleAnswer, score }) => {
+export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, question, options, handleAnswer, score, stoppedTime }) => {
     const [selectedOption, setSelectedOption] = useState('');
     const [timeLeft, setTimeLeftInterno] = useState(time);
     const [showModal, setShowModal] = useState(false);
@@ -13,7 +13,7 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, 
 
     useEffect(() => {
         let intervalId;
-
+        if(!stoppedTime){
         if (timeLeft > 0 && selectedOption === '' && !showModal) {
             intervalId = setInterval(() => {
                 setTimeLeftInterno(prevTimeLeft => prevTimeLeft - 1);
@@ -24,9 +24,10 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, 
             setShowModal(true);
             clearInterval(intervalId);
         }
+    }
 
         return () => clearInterval(intervalId);
-    }, [timeLeft, selectedOption, showModal, saveScore, user.idUser, data.idSubCategory, score]);
+    }, [timeLeft, selectedOption, showModal, saveScore, user.idUser, data.idSubCategory, score, stoppedTime]);
 
     useEffect(() => {
         if (showModal) {
@@ -97,6 +98,7 @@ export const Question = ({ saveScore, user, data, time, setTimeLeft, timeTotal, 
 
 Question.propTypes = {
     saveScore: PropTypes.func,
+    stoppedTime:PropTypes.bool,
     user: PropTypes.shape({
         idUser: PropTypes.number.isRequired,
     }).isRequired,

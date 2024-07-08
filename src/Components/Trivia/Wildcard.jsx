@@ -1,30 +1,28 @@
 import PropTypes from "prop-types";
 import "../../css/wildcard.css";
 import { restarBombicoins, restarComodin, sumarWildcard } from "../../services/Wildcard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getUser } from "../../services/Usuario";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export function Wildcard({ wildcard, funcionalidad, comodinUse }) {
+export function Wildcard({ wildcard, funcionalidad, comodinUse, usuario, stopTime }) {
   const [showModal, setShowModal] = useState(false);
   const [showModalSecundary, setShowModalSecundary] = useState(false);
   const [countComodin, setCountComodin] = useState(0);
-  const usuario = JSON.parse(localStorage.getItem("usuario"));
-  console.log(usuario);
-  const bombicoins = usuario.bombicoins;
-  const { user} = useAuth0();
+  const [stoppedTime, setStoppedTime]=useState(false);
+  const { user, isAuthenticated} = useAuth0();
 
   const handleClick = async () => {
     if (parseInt(wildcard.amount) > 0) {
       let used = wildcard.wildcard.name==="Salto"?funcionalidad(true):funcionalidad();
       let status = "";
       used
-        ? console.log("No se puede usar")
+        ? ""
         : (status = await restarComodin(wildcard.idUserWildcard));
       status === 204 ? comodinUse() : "";
-      console.log(204);
     } else {
-      setShowModal(true)
+      setShowModal(true);
+      setStoppedTime(true);
     }
   };
 
@@ -36,22 +34,23 @@ export function Wildcard({ wildcard, funcionalidad, comodinUse }) {
   const handleClickPay=async()=>{
     let msgError= document.getElementById("msg-error");
     let totalCost= countComodin*wildcard.wildcard.cost;
+      const bombicoins = usuario.bombicoins;
       if(totalCost>bombicoins){
         msgError.style.display="block";       
       }
       else{
         await restarBombicoins(usuario.idUser, totalCost);
-        console.log(await sumarWildcard(wildcard.idUserWildcard, countComodin));
         let userbd= await getUser(user.sub)
-        console.log(userbd)
         localStorage.setItem("usuario", JSON.stringify(userbd))
         setShowModalSecundary(false);
+        setStoppedTime(false);
       }
     }
 
   const handleClickBack=()=>{
     setShowModal(false);
     setShowModalSecundary(false);
+    setStoppedTime(false);
   }
 
   const changeCountComodin=(operation)=>{
@@ -68,6 +67,11 @@ export function Wildcard({ wildcard, funcionalidad, comodinUse }) {
     const operation = e.target.getAttribute('data-operation');
     changeCountComodin(operation === 'increment');
   };
+
+  useEffect(()=>{
+    if(stopTime!=null || stopTime!=undefined)
+    stopTime(stoppedTime);
+  },[stoppedTime])
 
   return (
     <>
@@ -129,7 +133,12 @@ export function Wildcard({ wildcard, funcionalidad, comodinUse }) {
           <button data-operation="increment" className="increment" onClick={handleClickComodin}>+</button>
           </div>
           <div className="btn-options">
-          <button className="btn-modal-yes" onClick={handleClickPay}>¡Comprar!</button>
+
+           <button className="btn-modal-yes" onClick={
+             usuario === null || usuario === undefined
+             ? null
+             : () => handleClickPay()
+      }>¡Comprar!</button>
           <button className="btn-modal-no" onClick={handleClickBack}>!No me alcanza!</button>
           </div>
           <p className="msg-error" id="msg-error" style={{display:"none"}}>No tienes sufiecientes bombicoins, ¡Oops!</p>
@@ -146,14 +155,20 @@ export function Wildcard({ wildcard, funcionalidad, comodinUse }) {
 Wildcard.propTypes = {
   comodinUse:PropTypes.func,
   funcionalidad:PropTypes.func,
+  stopTime:PropTypes.func,
   wildcard: PropTypes.shape({
-    idUserWildcard:PropTypes.string,
-    icon:PropTypes.string.isRequired,
+    idUserWildcard:PropTypes.number,
+    icon:PropTypes.string,
     wildcard: PropTypes.shape({
-      cost:PropTypes.number.isRequired,
-      icon: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
+      cost:PropTypes.number,
+      icon: PropTypes.string,
+      name: PropTypes.string,
     }),
     amount: PropTypes.number,
   }).isRequired,
+  usuario: PropTypes.shape({
+    bombicoins:PropTypes.number,
+    idUser:PropTypes.number,
+  })
+  
 };

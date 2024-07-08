@@ -9,6 +9,7 @@ export function WildcardsBar({
   activeShield,
   delectedAnwers,
   addTime,
+  stopTime
 }) {
   const [wildcards, setWildCards] = useState([]);
   const [usedComodin, setUsedComodin] = useState(0);
@@ -20,7 +21,6 @@ export function WildcardsBar({
       try {
         const response = await getWildcardsUser(idUser);
         setWildCards(response);
-        console.log(response);
         return response;
       } catch (error) {
         console.error("Error fetching trivia data getWildcardsUser:", error);
@@ -51,7 +51,9 @@ export function WildcardsBar({
               ? delectedAnwers
               : addTime
           }
+          usuario={usuario}
           comodinUse={comodinUse}
+          stopTime={stopTime}
         />
       ))}
       </aside>
@@ -66,5 +68,10 @@ export function WildcardsBar({
 }
 
 WildcardsBar.propTypes = {
-  idUser: PropTypes.number.isRequired,
+  idUser: PropTypes.number,
+  changeQuestion:PropTypes.func,
+  activeShield:PropTypes.func,
+  delectedAnwers:PropTypes.func,
+  addTime:PropTypes.func,
+  stopTime:PropTypes.func,
 };

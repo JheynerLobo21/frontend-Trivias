@@ -1,0 +1,218 @@
+.message-send{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+  
+  .paperplane {
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    height: 90%;
+    background-color: #50befa;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    box-shadow: 5px 5px #ffffff3f;
+  }
+  
+  .plane {
+    position: absolute;
+    left:30%;
+    top:40%;
+    animation: move 3s linear infinite;
+  }
+  
+  @keyframes move {
+    0% {transform: translateY(0) rotateX(0);}
+    25% {transform: translateY(-30px) rotateX(40deg);}
+    50% {transform: rotateX(0) translateY(0);}
+    75% {transform: rotateX(-40deg) translateY(30px);}
+    100% {transform: rotateX(0) translateY(0);}
+  }
+  
+  .wingRight {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 22.5px solid transparent;
+    border-right: 12.5px solid transparent;
+    border-bottom: 115px solid white;
+    transform: rotate(61deg); 
+    z-index:4;
+  }
+  
+  .bottom {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-left: 12.5px solid transparent;
+    border-right: 12.5px solid transparent;
+    border-bottom: 25.5px solid #676d70;
+    top: 71px;
+    transform: rotate(-5deg);
+    left:-52.5px;
+    z-index:3;
+  }
+  
+  .top {
+    position:absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 30px solid #c1c7c9;
+    top: 65px;
+    transform: rotate(5deg);
+    left:-60px;
+    z-index:1;
+  }
+  
+  .middle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 135px solid #c1c7c9;
+    top: -13.5px;
+    transform: rotate(72deg);
+    left:-7.5px;
+    z-index:2;
+  }
+  
+  .wingLeft {
+    position: absolute; 
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-bottom: 135px solid white;
+    transform: rotate(78deg) skewY(-35deg); 
+    left:-18.5px;
+    z-index:3;
+    top:-30px;
+  }
+  
+  .clouds {
+    position: absolute;
+    top:15%;
+    left:10%;
+  }
+  
+  @keyframes cloud {  
+    from{ 
+      left:-150px; 
+    }
+    to{ 
+      left: 1500px; 
+    }
+  }
+  
+  .cloudOne, .cloudTwo, .cloudThree, .cloudFour, .cloudFive {
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    background-color: #fff;
+    border-radius:100px 100px 0 0;
+  }
+  
+  .cloudOne {
+    top:0;
+    left:0;
+    animation: cloud 8s linear infinite reverse;
+  }
+  
+  .cloudTwo {
+    top:50px;
+    left:100px;
+    animation: cloud 8.5s linear infinite reverse;
+  }
+  
+  .cloudThree {
+    top:200px;
+    left:50px;
+    animation: cloud 8.8s linear infinite reverse;
+  }
+  .cloudFour {
+    top:300px;
+    left:20px;
+    animation: cloud 7.5s linear infinite reverse;
+  }
+  .cloudFive {
+    top:400px;
+    left:20px;
+    animation: cloud 8s linear infinite reverse;
+  }
+  
+  .cloudOne:before, .cloudTwo:before, .cloudThree:before, .cloudFour:before, .cloudFive::before{
+    content:"";
+    position: absolute;
+    width: 25px;
+    height: 12.5px;
+    background-color: #fff;
+    border-radius:100px 100px 0 0;
+    left:-20px;
+    top:12.5px;
+    box-shadow: 65px 0 #fff;
+  }
+
+  .animation-plane{
+    width: 50%;
+  }
+  .send-message{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width:50%;
+  }
+
+  .send-message-tittle{
+    color: #2531aa;
+    font-size: 40px;
+    z-index: 1001;
+  }
+  .send-message-description{
+    color: rgb(0, 0, 0);
+    background-color: #fff;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 5px;
+    z-index: 100;
+  }
+
+  @media (max-width:762px){
+  @keyframes cloud {  
+    from{ 
+      left:-150px; 
+    }
+    to{ 
+      left: 750px; 
+    }
+  }
+}
+@media (max-width:530px){
+    .paperplane{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .animation-plane{
+        height: 40%;
+    }
+    .plane{
+        top: 200px;
+        left: 160px;
+    }
+    .cloudFive{
+        top: 500px;
+    }
+  }

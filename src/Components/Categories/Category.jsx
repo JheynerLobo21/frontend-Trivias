@@ -7,7 +7,6 @@ import { getUser,createUser } from '../../services/Usuario.js'
 import { NavbarHome } from '../Navbar/NavbarHome.jsx'
 export const Category = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log(user);
   useEffect(() => {
     const fetchData = async () => {
         try {
@@ -19,11 +18,9 @@ export const Category = () => {
               email: user.email
           };
             userbd=await createUser(userbd)
-          console.log(userbd);
-          userbd.status!=500?localStorage.setItem("usuario",JSON.stringify(userbd.response)):console.log("error entonces no se puede guardar en localstorage")
+          userbd.status!=500?localStorage.setItem("usuario",JSON.stringify(userbd.response)):""
         }else{
           localStorage.setItem("usuario",JSON.stringify(userbd));
-          console.log("ya esta en la bd");
         }
 
         } catch (error) {

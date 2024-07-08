@@ -12,7 +12,6 @@ export const SubCategories = () => {
   const [hide, setHide]=useState(false);
 
   const category = JSON.parse(localStorage.getItem("category"));
-  console.log(category);
 
   const handleBtnClick = (subcategory) => {
     setBtnSubcategory(subcategory);

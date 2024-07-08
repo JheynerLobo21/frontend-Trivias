@@ -1,7 +1,8 @@
 import React from 'react'
+import { Pacman } from '../Loading/Pacman'
 
 export const CallbackPage = () => {
   return (
-    <div></div>
+    <div><Pacman></Pacman></div>
   )
 }

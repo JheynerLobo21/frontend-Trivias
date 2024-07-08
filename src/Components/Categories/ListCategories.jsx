@@ -10,7 +10,6 @@ import { useAuth0 } from "@auth0/auth0-react";
     const getImg = (imagenes, id) => {
         const imagen = imagenes.find((imagen) => imagen.id === id);
         if (imagen) {
-            console.log(imagen.path);
             return imagen.path;
         }
     };
@@ -18,7 +17,6 @@ import { useAuth0 } from "@auth0/auth0-react";
     const getColor = (colors, id) => {
         const color = colors.find((color) => color.id === id);
         if (color) {
-            console.log(color.path);
             return color.path;
         }
     };
@@ -27,14 +25,11 @@ export const ListCategories =  () => {
     const { isAuthenticated, getAccessTokenSilently } = useAuth0();
 
     const [categories,setCategories]=useState([]);
-        console.log(isAuthenticated)
         useEffect(()=>{
             const getCategories=async()=>{
 
             try { if (isAuthenticated) {
                 const token = await getAccessTokenSilently();
-                console.log("Este es el tocken");
-                console.log(token);
                 const response = await helpHttp().get(servidorAPI + "api/public/Category", {
                     headers: {
                         "Accept": "application/json",
@@ -43,7 +38,6 @@ export const ListCategories =  () => {
                     }
                 });
                 setCategories(await response);
-                console.log(await response);
             }
         }
             catch (error) {
@@ -52,7 +46,6 @@ export const ListCategories =  () => {
         
         getCategories();
         },[]) 
-        console.log(categories);
         
 
 

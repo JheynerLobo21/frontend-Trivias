@@ -61,7 +61,7 @@ export const ButtonSubcategories = ({ subcategory, onBtnClick, hide }) => {
 
     return (
         <button
-            className={`${JSON.parse(localStorage.getItem("category")).name} ${!asideVisible ? `${JSON.parse(localStorage.getItem("category")).name}-infocus-button` : ""} ${asideVisible && 'btn-clicked'}`}
+            className={`${JSON.parse(localStorage.getItem("category")).name.replace(/ /g,"-")} ${!asideVisible ? `${JSON.parse(localStorage.getItem("category")).name.replace(/ /g,"-")}-infocus-button` : ""} ${asideVisible && 'btn-clicked'}`}
             onMouseEnter={handleMouseEnter}
             onMouseOut={handleMouseOut}
             onClick={handleClick}

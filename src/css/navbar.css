@@ -56,6 +56,7 @@
 .nav-menu{
   display: flex;
   margin-left: 8vw;
+  align-items: center;
 }
 .nav-menu-item{
   position: relative;
@@ -318,12 +319,39 @@
 .name-in{
   display: flex;
 }
+.user-data{
+  display: none;
+}
+
+}
+
+.logout-item2{
+  display: none;
 }
 
 @media (min-width:900px){
   .dropdown-name2, .hr-name{
     display: none;
   }
+  .logout-item{
+    display: none;
+  }
+  .logout-item2{
+    display: flex;
+    position: absolute;
+    right: 30px;
+    top: 80px;
+  }
+  .logout-item2 button{
+    background-color: #02012e;
+  }
+  .hr-cond-small{
+    display: none;
+  }
+}
+
+.nav-menu-logout{
+  display: flex;
 }
 
 

@@ -4,10 +4,10 @@ import { triviaData, saveScore } from "../../services/TriviaData";
 import { useNavigate } from "react-router-dom";
 import { Score } from "./Score";
 import "../../css/Trivia.css";
-import { useAuth0 } from "@auth0/auth0-react";
 import { NavbarHome } from "../Navbar/NavbarHome";
 import { WildcardsBar } from "./WildcardsBar";
 import { IsLoading } from "../Loading/IsLoading";
+import { maxQuestions } from "../../constants";
 
 export const TriviaPage = () => {
   const subcategory = decodeURIComponent(
@@ -21,6 +21,8 @@ export const TriviaPage = () => {
   const [question, setQuestion] = useState({});
   const [loading, setLoading] = useState(true);
   const [wildcardIcon, setWildcardIcon] = useState(null); 
+  const [historyQuestions, setHistoryQuestions] =useState([]);
+  const [stoppedTime, setStoppedTime]=useState(false);
   const data = JSON.parse(localStorage.getItem("data"));
   const category = decodeURIComponent(
     window.location.pathname.split("/")[2].replace(/-/g, " ")
@@ -31,10 +33,14 @@ export const TriviaPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await triviaData(data.idSubCategory, data.dificultad);
+        const response = await triviaData(data.idSubCategory, data.dificultad, getStringHistoryQuestion(historyQuestions));
         setQuestion(response);
-        console.log(response);
-        console.log(question);
+        if(historyQuestions.length==maxQuestions){
+          setHistoryQuestions([...historyQuestions.slice(1), response.question])
+        }
+        else{
+          setHistoryQuestions([...historyQuestions, response.question]);
+        }
         return response;
       } catch (error) {
         console.error("Error fetching trivia data:", error);
@@ -45,6 +51,16 @@ export const TriviaPage = () => {
 
     fetchData();
   }, [score, data.idSubCategory, data.dificultad, jump]);
+
+  const getStringHistoryQuestion=(historico)=>{
+    let stringHistory=""
+    for(let i=0;i<historico.length;i++) {
+      stringHistory+=" " +historico[i];
+      if(i+1===historico.length)stringHistory+=".";
+      else stringHistory+=",";
+    }
+    return stringHistory;
+  }
 
   const handleAnswer = (isCorrect) => {
     setTimeout(()=>{
@@ -127,6 +143,10 @@ export const TriviaPage = () => {
     setTimeLeft(timeLeft + 10);
     setTimeTotal(timeLeft + 10);
   };
+
+  const stopTime=(st)=>{
+    setStoppedTime(st);
+  }
   
   return (
     <>
@@ -145,6 +165,7 @@ export const TriviaPage = () => {
             activeShield={activeShield}
             delectedAnwers={delectedAnwers}
             addTime={addTime}
+            stopTime={stopTime}
           />
         </div>
         
@@ -168,6 +189,7 @@ export const TriviaPage = () => {
               handleAnswer={handleAnswer}
               saveScore={saveScore}
               setTimeLeft={setTimeLeft}
+              stoppedTime={stoppedTime}
             />
           )}
         </section>

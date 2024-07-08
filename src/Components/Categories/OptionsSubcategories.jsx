@@ -19,7 +19,6 @@ export const OptionsSubcategories = ({ onBtnClick, hide }) => {
                     }
                 });
                 setSubCategories(await response);
-                console.log(await response);
                 return response;
             } catch (error) {
                 console.error(error);
