@@ -47,3 +47,35 @@ export const restarComodin = async (idUserWildcard)=>{
         console.log(err);
     }
 }
+
+export const restarBombicoins = async(idUserWildcard, costWildcard)=>{
+    try{
+        const response = await fetch(`${servidorAPI}api/public/User/Bombicoins/subtract/${idUserWildcard},${costWildcard}`,{
+            method:"PATCH",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        });
+        return response.status;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+export const sumarWildcard = async(idUserWildcard, countWildcard)=>{
+    try{
+        const response = await fetch(`${servidorAPI}api/public/User/Wildcard/Add/${idUserWildcard},${countWildcard}`,{
+            method:"PATCH",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        });
+        return response.status;
+    }
+    catch(err){
+        console.log(err);
+    }
+}

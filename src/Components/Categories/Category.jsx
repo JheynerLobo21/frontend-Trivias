@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import {Navbar} from '../Navbar/Navbar'
 import '../../css/categories.css'
 import { ListCategories } from './ListCategories.jsx'
 import { useAuth0 } from '@auth0/auth0-react'
 import { CallbackPage } from '../Auth0/CallbackPage.tsx'
 import { getUser,createUser } from '../../services/Usuario.js'
+import { NavbarHome } from '../Navbar/NavbarHome.jsx'
 export const Category = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   console.log(user);
@@ -41,7 +41,7 @@ if (isLoading) {
   return (
     <>
       
-      <Navbar user={user}/>
+      <NavbarHome/>
       <div className='container-general'>
       <div className='main-category'>
         <h1 className='title'>TRIVIATON</h1>

@@ -1,9 +1,10 @@
 .icon-header {
     position: relative;  /* Asegura que .icon-header sea un contenedor relativo */
     margin-top: 0vw;
-    margin-right: 4vw;
     float: right;
     cursor: pointer;
+    align-content: center;
+    
 }
 
 .icon {
@@ -13,7 +14,7 @@
     border-radius: 50%;
     object-fit: cover;
     vertical-align: super;
-    color: rgb(8, 241, 222);
+    color: #30a9da;
     font-size: 30px;  
     line-height: 30px;
     text-align: center;
@@ -26,12 +27,92 @@
 }
 
 .cantidad {
-    width: 1.5vw;
-    height: 1.5vw;
+    width: 16px;
+    height: 16px;
     position: absolute;
-    top: 0;
+    top: 18px;
+    padding: 3px;
     color: #fff;
-    background-color: green;  /* Ejemplo de fondo para .cantidad */
+    background-color: rgb(28, 201, 28);  /* Ejemplo de fondo para .cantidad */
     border-radius: 50%;  /* Ajusta el radio del borde si lo necesitas */
     text-align: center;  /* Asegura que el texto esté centrado */
+    right: -10px;
+}
+
+.msg-error{
+    color: red;
+}
+
+.modal{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.btn-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-modal-yes, .btn-modal-no{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-modal-yes{
+    background: #1cb40f;
+    color: #fff;
+}
+
+.btn-modal-no{
+    background: gray;
+    color: #000;
+}
+
+.btn-modal-yes:hover, .btn-modal-no:hover{
+    box-shadow: 0 2px 4px rgba(29, 29, 29, 0.5);
+    transform: scale(1.1);
+}
+
+.count-wildcard{
+    width: 100px;
+    height: 20px;
+    border: 1px solid #098db6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.count-comodin{
+    color: #2531aa;
+    font-size: 22px;
+}
+
+.btn-count-comodins{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ column-gap: 10px;
+ margin-bottom: 10px;
+}
+
+.decrement, .increment{
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background: #098db6;
+    color: #fff;
+    border: 1px solid #06546b;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.decrement.disabled{
+    background: gray;
+    border:1px solid gray;
+    cursor: default;
 }

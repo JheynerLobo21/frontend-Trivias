@@ -51,6 +51,8 @@ export const LineTime = ({timeLeft, timeTotal, selectedOption}) => {
 
 LineTime.propTypes = {
   timeLeft: PropTypes.number.isRequired,
+  timeTotal: PropTypes.number.isRequired,
+  selectedOption: PropTypes.string.isRequired,
 };
 
 

@@ -12,6 +12,8 @@ export function WildcardsBar({
 }) {
   const [wildcards, setWildCards] = useState([]);
   const [usedComodin, setUsedComodin] = useState(0);
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
+  const bombicoins = usuario.bombicoins;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +28,7 @@ export function WildcardsBar({
     };
 
     fetchData();
-  }, [usedComodin]);
+  }, [usedComodin, bombicoins]);
 
   const comodinUse = () => {
     setUsedComodin(usedComodin + 1);
@@ -34,6 +36,8 @@ export function WildcardsBar({
 
   return (
     <>
+      <div className="container-wildcard-coins">
+      <aside className="wildcard-bar">
       {wildcards.map((wildcard, index) => (
         <Wildcard
           key={index}
@@ -50,6 +54,13 @@ export function WildcardsBar({
           comodinUse={comodinUse}
         />
       ))}
+      </aside>
+      <div className="bombicoins">
+      <img src="/public/bombicoins.png" alt="bombicoins" className="img-bombicoins"/>
+      <label className="count-bombicoins">{bombicoins}</label>
+      <i className="bi bi-plus plus"></i>
+      </div>
+      </div>
     </>
   );
 }

@@ -219,6 +219,7 @@
 
   .logout:hover{
     color: #e41414;
+    cursor: pointer;
   }
 
   .hr-menu{
@@ -229,12 +230,94 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-
-
-@media (max-width:900px){
-  .dropdown-name{
+  .navbar-toggle{
     display: none;
   }
+
+  .nav-menu-item + hr{
+    display: none;
+  }
+
+  .user-data{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+  }
+
+  .name-user-dropdown{
+    margin: 2px;
+    font-size: 1.5em;
+    color: #fff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: default;
+  }
+
+  .name-in{
+    display: none;
+  }
+  
+@media (max-width:900px){
+
+  .home-nav {
+    flex-direction: column;
+    align-items: flex-start;
+}
+.navbar-toggle {
+  display: flex;
+  position: relative;
+  font-size: 30px;
+  color: #fff;
+  margin-top: 20px;
+  margin-left: 90%;
+  cursor: pointer;
+}
+
+.nav-menu {
+  flex-direction: column;
+  position: absolute;
+  width: 60%;
+  background-color: #02012e;
+  display: none;
+}
+.items-navbar a{
+  margin-right: 0;
+}
+.nav-menu.open {
+  display: grid;
+  justify-content: center;
+  border-radius: 10px;
+  z-index: 1;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 0;
+  right: 5px;
+}
+
+.nav-menu li {
+  width: 100%;
+  margin-top: 10px;
+}
+.nav-menu-item{
+  top: 0;
+}
+.nav-text{
+  background-color: transparent;
+}
+.nav-menu-item + hr{
+  display: block;
+}
+.nav-menu-item:not(.dropdown-item){
+    display: none;
+  }
+.dropdown-name, .fotoperfil{
+  display: none;
+}
+.name-out{
+  display: none;
+}
+.name-in{
+  display: flex;
+}
 }
 
 @media (min-width:900px){
@@ -242,13 +325,6 @@
     display: none;
   }
 }
-
-@media (max-width:600px){
-  .nav-menu-item{
-    display: none;
-  }
-}
-
 
 
   

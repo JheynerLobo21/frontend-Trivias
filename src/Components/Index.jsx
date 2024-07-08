@@ -33,7 +33,7 @@ export const Index = () => {
               Eleva tus conocimietos al maximo
             </label>
             <Link to="/categories">
-            <button className="again-play w-category home-bottom">
+            <button className="again-play w-category home-bottom" >
               ¡Jugar ahora!
               <span></span>
               <span></span>

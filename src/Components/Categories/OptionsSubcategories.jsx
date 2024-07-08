@@ -6,7 +6,7 @@ import {helpHttp} from '../../helpers/helpHttp';
 import {servidorAPI} from '../../constants'
 
 
-export const OptionsSubcategories = ({ onBtnClick }) => {
+export const OptionsSubcategories = ({ onBtnClick, hide }) => {
     
     const [subCategories,setSubCategories]=useState([]);
         useEffect(()=>{
@@ -33,7 +33,7 @@ export const OptionsSubcategories = ({ onBtnClick }) => {
             <ul className='listsubcategories-menu'>
                 {subCategories.map((subcategory, index) => (
                     <li className='subcategorias' key={index}>
-                        <ButtonSubcategories subcategory={subcategory} onBtnClick={onBtnClick} />
+                        <ButtonSubcategories subcategory={subcategory} onBtnClick={onBtnClick} hide={hide}/>
                     </li>
                 ))}
             </ul>
@@ -43,5 +43,6 @@ export const OptionsSubcategories = ({ onBtnClick }) => {
 
 OptionsSubcategories.propTypes = {
     onBtnClick: PropTypes.func,
+    hide: PropTypes.bool,
     initialVisible: PropTypes.bool,
   };

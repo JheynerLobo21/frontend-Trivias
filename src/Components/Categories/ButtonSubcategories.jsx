@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import '../../css/subcategories.css';
 let current = null;
 
-export const ButtonSubcategories = ({ subcategory, onBtnClick }) => {
-    const [asideVisible, setAsideVisible] = useState(false);
+export const ButtonSubcategories = ({ subcategory, onBtnClick, hide }) => {
+    const [asideVisible, setAsideVisible] = useState(hide);
 
     const handleMouseEnter = (e) => {
         const span = e.target.querySelector('.span-posnawr');
@@ -50,10 +50,14 @@ export const ButtonSubcategories = ({ subcategory, onBtnClick }) => {
         const aside = document.getElementById('descriptionsubcategory');
         const asideB = document.getElementById('listsubcategories');
         if (aside) {
-            aside.style.display = asideVisible ? 'block' : 'none';
+            aside.style.display = asideVisible ? 'flex' : 'none';
             asideB.classList.add = 'list-selected';
         }
     }, [asideVisible]);
+
+    useEffect(()=>{
+        setAsideVisible(false)
+    },[hide])
 
     return (
         <button
@@ -76,4 +80,5 @@ ButtonSubcategories.propTypes = {
       }).isRequired,
     onBtnClick: PropTypes.func,
     initialVisible: PropTypes.bool,
+    hide: PropTypes.bool,
   };

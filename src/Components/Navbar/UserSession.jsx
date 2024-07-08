@@ -35,7 +35,7 @@ export const Dropdown = ({ user }) => {
       </button>
     <div ref={dropdownRef} className="dropdown-container">
     <button className="dropdown-toggle" onClick={toggleDropdown}>
-        <img src={picture} alt="foto perfil" className='fotoperfil' />
+        <img src={picture} alt="foto perfil" className='fotoperfil foto-subcategory' />
       </button>
       
       {isOpen && (

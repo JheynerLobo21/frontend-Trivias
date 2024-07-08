@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "/src/css/failed.scss";
 
 export const Failed = () => {
-    const scoreTotal = localStorage.getItem("scoreTotal");
+    const {state} = useLocation();
+    const scoreTotal=state.scoreTotal;
+    
 
     return (
         <>

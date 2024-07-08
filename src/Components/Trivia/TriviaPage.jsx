@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Score } from "./Score";
 import "../../css/Trivia.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Navbar } from "../Navbar/Navbar";
+import { NavbarHome } from "../Navbar/NavbarHome";
 import { WildcardsBar } from "./WildcardsBar";
 import { IsLoading } from "../Loading/IsLoading";
 
@@ -26,7 +26,6 @@ export const TriviaPage = () => {
     window.location.pathname.split("/")[2].replace(/-/g, " ")
   );
   const user2 = JSON.parse(localStorage.getItem("usuario"));
-  const { user } = useAuth0();
   const navigate = useNavigate(); // Hook de navegación
 
   useEffect(() => {
@@ -59,10 +58,9 @@ export const TriviaPage = () => {
           changeQuestion();
         } else {
           saveScore(user2.idUser, data.idSubCategory, score);
-          setLoading(true);
-          localStorage.setItem("scoreTotal", score);
           localStorage.setItem("pageTrivia", window.location.pathname);
-          navigate('/endGame'); 
+          setLoading(true);
+          navigate('/endGame', {state:{scoreTotal: score}}); 
         }
       }
       setTimeLeft(20);
@@ -132,7 +130,7 @@ export const TriviaPage = () => {
   
   return (
     <>
-      <Navbar user={user} />
+      <NavbarHome/>
       <div className="container-general">
       <main className="main-trivia">
         
@@ -161,13 +159,13 @@ export const TriviaPage = () => {
               correctAnswer={question.answers.find(
                 (answer) => answer.correct === true
               )}
-              handleAnswer={handleAnswer}
               time={timeLeft}
               timeTotal={timeTotal}
               score={score}
               category={category}
               user={user2}
               data={data}
+              handleAnswer={handleAnswer}
               saveScore={saveScore}
               setTimeLeft={setTimeLeft}
             />
