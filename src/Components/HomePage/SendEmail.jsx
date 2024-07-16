@@ -1,4 +1,4 @@
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import "../../css/contact.css";
 
@@ -29,25 +29,29 @@ export const SendEmail = () => {
       {showMessage ? (
         <div className="message-send" role="alert">
           <div className="paperplane">
-          <aside className="animation-plane">
-            <div className="plane">
-              <div className="wingRight"></div>
-              <div className="wingLeft"></div>
-              <div className="bottom"></div>
-              <div className="top"></div>
-              <div className="middle"></div>
-            </div>
-            <div className="clouds">
-              <div className="cloudOne"></div>
-              <div className="cloudTwo"></div>
-              <div className="cloudThree"></div>
-              <div className="cloudFour"></div>
-              <div className="cloudFive"></div>
-            </div>
+            <aside className="animation-plane">
+              <div className="plane">
+                <div className="wingRight"></div>
+                <div className="wingLeft"></div>
+                <div className="bottom"></div>
+                <div className="top"></div>
+                <div className="middle"></div>
+              </div>
+              <div className="clouds">
+                <div className="cloudOne"></div>
+                <div className="cloudTwo"></div>
+                <div className="cloudThree"></div>
+                <div className="cloudFour"></div>
+                <div className="cloudFive"></div>
+              </div>
             </aside>
             <div className="send-message">
-              <label className="send-message-tittle">¡Gracias por contactarnos!</label>
-              <label className="send-message-description">En breve te daremos una respuesta.</label>
+              <label className="send-message-tittle">
+                ¡Gracias por contactarnos!
+              </label>
+              <label className="send-message-description">
+                En breve te daremos una respuesta.
+              </label>
             </div>
           </div>
         </div>

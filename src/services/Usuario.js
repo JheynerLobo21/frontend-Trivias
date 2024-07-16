@@ -1,4 +1,4 @@
-let servidorAPI = "http://localhost:8104/";
+let servidorAPI = "https://trivia-api-4gag.onrender.com/";
 
 export const getUser = async (idAuth) => {
   try {

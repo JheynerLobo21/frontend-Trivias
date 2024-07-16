@@ -1,4 +1,4 @@
-let servidorAPI = "http://localhost:8104/";
+let servidorAPI = "https://trivia-yt0r.onrender.com/";
 
 export const getWildcardsUser = async (idUser) => {
   try {
@@ -9,6 +9,7 @@ export const getWildcardsUser = async (idUser) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       }
     );

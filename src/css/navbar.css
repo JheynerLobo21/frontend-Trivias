@@ -22,6 +22,7 @@
     z-index: 1;
     padding: 0 15px 0 0;
     margin-top: 15px;
+    cursor: pointer;
   }
   .items-navbar {
     flex-grow: 1;

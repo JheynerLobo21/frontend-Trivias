@@ -11,6 +11,15 @@ export const Index = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        let user = localStorage.getItem("usuario");
+        console.log(user);
+        localStorage.clear();
+        console.log(user);
+        if (user != undefined) {
+          user = JSON.parse(user);
+          console.log(user);
+          localStorage.setItem("usuario", JSON.stringify(user));
+        }
         const response = await getWildcards();
         setWildCards(response);
         return response;
@@ -33,13 +42,13 @@ export const Index = () => {
               Eleva tus conocimietos al maximo
             </label>
             <Link to="/categories">
-            <button className="again-play w-category home-bottom" >
-              ¡Jugar ahora!
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
+              <button className="again-play w-category home-bottom">
+                ¡Jugar ahora!
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
             </Link>
           </div>
           <img className="home-img-pc" src="pc1-2.png" alt="imagen-pc" />

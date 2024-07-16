@@ -9,7 +9,7 @@ export function WildcardsBar({
   activeShield,
   delectedAnwers,
   addTime,
-  stopTime
+  stopTime,
 }) {
   const [wildcards, setWildCards] = useState([]);
   const [usedComodin, setUsedComodin] = useState(0);
@@ -37,31 +37,35 @@ export function WildcardsBar({
   return (
     <>
       <div className="container-wildcard-coins">
-      <aside className="wildcard-bar">
-      {wildcards.map((wildcard, index) => (
-        <Wildcard
-          key={index}
-          wildcard={wildcard}
-          funcionalidad={
-            wildcard.wildcard.name === "Salto"
-              ? changeQuestion
-              : wildcard.wildcard.name === "Escudo"
-              ? activeShield
-              : wildcard.wildcard.name === "50/50"
-              ? delectedAnwers
-              : addTime
-          }
-          usuario={usuario}
-          comodinUse={comodinUse}
-          stopTime={stopTime}
-        />
-      ))}
-      </aside>
-      <div className="bombicoins">
-      <img src="/public/bombicoins.png" alt="bombicoins" className="img-bombicoins"/>
-      <label className="count-bombicoins">{bombicoins}</label>
-      <i className="bi bi-plus plus"></i>
-      </div>
+        <aside className="wildcard-bar">
+          {wildcards.map((wildcard, index) => (
+            <Wildcard
+              key={index}
+              wildcard={wildcard}
+              funcionalidad={
+                wildcard.wildcard.name === "Salto"
+                  ? changeQuestion
+                  : wildcard.wildcard.name === "Escudo"
+                  ? activeShield
+                  : wildcard.wildcard.name === "50/50"
+                  ? delectedAnwers
+                  : addTime
+              }
+              usuario={usuario}
+              comodinUse={comodinUse}
+              stopTime={stopTime}
+            />
+          ))}
+        </aside>
+        <div className="bombicoins">
+          <img
+            src="../../bombicoins.png"
+            alt="bombicoins"
+            className="img-bombicoins"
+          />
+          <label className="count-bombicoins">{bombicoins}</label>
+          <i className="bi bi-plus plus"></i>
+        </div>
       </div>
     </>
   );
@@ -69,9 +73,9 @@ export function WildcardsBar({
 
 WildcardsBar.propTypes = {
   idUser: PropTypes.number,
-  changeQuestion:PropTypes.func,
-  activeShield:PropTypes.func,
-  delectedAnwers:PropTypes.func,
-  addTime:PropTypes.func,
-  stopTime:PropTypes.func,
+  changeQuestion: PropTypes.func,
+  activeShield: PropTypes.func,
+  delectedAnwers: PropTypes.func,
+  addTime: PropTypes.func,
+  stopTime: PropTypes.func,
 };

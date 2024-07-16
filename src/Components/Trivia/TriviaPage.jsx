@@ -20,25 +20,38 @@ export const TriviaPage = () => {
   const [timeTotal, setTimeTotal] = useState(20);
   const [question, setQuestion] = useState({});
   const [loading, setLoading] = useState(true);
-  const [wildcardIcon, setWildcardIcon] = useState(null); 
-  const [historyQuestions, setHistoryQuestions] =useState([]);
-  const [stoppedTime, setStoppedTime]=useState(false);
-  const data = JSON.parse(localStorage.getItem("data"));
+  const [wildcardIcon, setWildcardIcon] = useState(null);
+  const [historyQuestions, setHistoryQuestions] = useState([]);
+  const [stoppedTime, setStoppedTime] = useState(false);
+  const navigate = useNavigate();
+  let data = {};
+  let user2 = {};
+  try {
+    data = JSON.parse(localStorage.getItem("data"));
+
+    user2 = JSON.parse(localStorage.getItem("usuario"));
+  } catch {
+    navigate("/");
+  }
   const category = decodeURIComponent(
     window.location.pathname.split("/")[2].replace(/-/g, " ")
   );
-  const user2 = JSON.parse(localStorage.getItem("usuario"));
-  const navigate = useNavigate(); // Hook de navegación
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await triviaData(data.idSubCategory, data.dificultad, getStringHistoryQuestion(historyQuestions));
+        const response = await triviaData(
+          data.idSubCategory,
+          data.dificultad,
+          getStringHistoryQuestion(historyQuestions)
+        );
         setQuestion(response);
-        if(historyQuestions.length==maxQuestions){
-          setHistoryQuestions([...historyQuestions.slice(1), response.question])
-        }
-        else{
+        if (historyQuestions.length == maxQuestions) {
+          setHistoryQuestions([
+            ...historyQuestions.slice(1),
+            response.question,
+          ]);
+        } else {
           setHistoryQuestions([...historyQuestions, response.question]);
         }
         return response;
@@ -52,20 +65,20 @@ export const TriviaPage = () => {
     fetchData();
   }, [score, data.idSubCategory, data.dificultad, jump]);
 
-  const getStringHistoryQuestion=(historico)=>{
-    let stringHistory=""
-    for(let i=0;i<historico.length;i++) {
-      stringHistory+=" " +historico[i];
-      if(i+1===historico.length)stringHistory+=".";
-      else stringHistory+=",";
+  const getStringHistoryQuestion = (historico) => {
+    let stringHistory = "";
+    for (let i = 0; i < historico.length; i++) {
+      stringHistory += " " + historico[i];
+      if (i + 1 === historico.length) stringHistory += ".";
+      else stringHistory += ",";
     }
     return stringHistory;
-  }
+  };
 
   const handleAnswer = (isCorrect) => {
-    setTimeout(()=>{
+    setTimeout(() => {
       if (isCorrect) {
-        setScore(score + 1);      
+        setScore(score + 1);
         setLoading(true);
         setShield(false);
       } else {
@@ -76,20 +89,19 @@ export const TriviaPage = () => {
           saveScore(user2.idUser, data.idSubCategory, score);
           localStorage.setItem("pageTrivia", window.location.pathname);
           setLoading(true);
-          navigate('/endGame', {state:{scoreTotal: score}}); 
+          navigate("/endGame", { state: { scoreTotal: score } });
         }
       }
       setTimeLeft(20);
       setTimeTotal(20);
-    },2000)
-    
+    }, 2000);
   };
 
   const showWildcardIcon = (iconName) => {
     setWildcardIcon(iconName);
     setTimeout(() => {
       setWildcardIcon(null);
-    }, 2000)
+    }, 2000);
   };
 
   const changeQuestion = (jumpComodin) => {
@@ -98,8 +110,7 @@ export const TriviaPage = () => {
       setJump(jump + 1);
       setTimeLeft(20);
       setLoading(true);
-      jumpComodin?
-      showWildcardIcon("bi bi-skip-end-circle-fill"):"";
+      jumpComodin ? showWildcardIcon("bi bi-skip-end-circle-fill") : "";
       return false;
     } else {
       return true;
@@ -107,8 +118,9 @@ export const TriviaPage = () => {
   };
 
   const activeShield = () => {
-    !shield?
-    showWildcardIcon("bi bi-shield-fill-check"):showWildcardIcon("Ya está usado"); 
+    !shield
+      ? showWildcardIcon("bi bi-shield-fill-check")
+      : showWildcardIcon("Ya está usado");
     return shield ? true : setShield(true);
   };
 
@@ -134,7 +146,7 @@ export const TriviaPage = () => {
       setQuestion(questionSubtract);
       return false;
     }
-    showWildcardIcon("Ya está usado")
+    showWildcardIcon("Ya está usado");
     return true;
   };
 
@@ -144,65 +156,67 @@ export const TriviaPage = () => {
     setTimeTotal(timeLeft + 10);
   };
 
-  const stopTime=(st)=>{
+  const stopTime = (st) => {
     setStoppedTime(st);
-  }
-  
+  };
+
   return (
     <>
-      <NavbarHome/>
+      <NavbarHome />
       <div className="container-general">
-      <main className="main-trivia">
-        
-        <section className="section-centered">
-          
-          <h1 className="centered">{subcategory}</h1>
+        <main className="main-trivia">
+          <section className="section-centered">
+            <h1 className="centered">{subcategory}</h1>
 
-          <div className="main-wildcards">
-          <WildcardsBar
-            idUser={user2.idUser}
-            changeQuestion={changeQuestion}
-            activeShield={activeShield}
-            delectedAnwers={delectedAnwers}
-            addTime={addTime}
-            stopTime={stopTime}
-          />
-        </div>
-        
-          <Score score={score} />
+            <div className="main-wildcards">
+              <WildcardsBar
+                idUser={user2.idUser}
+                changeQuestion={changeQuestion}
+                activeShield={activeShield}
+                delectedAnwers={delectedAnwers}
+                addTime={addTime}
+                stopTime={stopTime}
+              />
+            </div>
 
-          {loading ? (
-            <IsLoading />
-          ) : (
-            <Question
-              question={question.question}
-              options={question.answers}
-              correctAnswer={question.answers.find(
-                (answer) => answer.correct === true
-              )}
-              time={timeLeft}
-              timeTotal={timeTotal}
-              score={score}
-              category={category}
-              user={user2}
-              data={data}
-              handleAnswer={handleAnswer}
-              saveScore={saveScore}
-              setTimeLeft={setTimeLeft}
-              stoppedTime={stoppedTime}
-            />
-          )}
-        </section>
-      </main>
-      {wildcardIcon==='Ya está usado' ?
-      (<div className="wildcard-text-overlay">
-      <label className="textIconUsed">¡Sólo se puede usar una vez por pregunta!</label>
-    </div>)
-      : wildcardIcon &&(
-        <div className="wildcard-icon-overlay">
-          <i className={`${wildcardIcon} icon-large`}></i>
-        </div>
-      )}
+            <Score score={score} />
+
+            {loading ? (
+              <IsLoading />
+            ) : (
+              <Question
+                question={question.question}
+                options={question.answers}
+                correctAnswer={question.answers.find(
+                  (answer) => answer.correct === true
+                )}
+                time={timeLeft}
+                timeTotal={timeTotal}
+                score={score}
+                category={category}
+                user={user2}
+                data={data}
+                handleAnswer={handleAnswer}
+                saveScore={saveScore}
+                setTimeLeft={setTimeLeft}
+                stoppedTime={stoppedTime}
+              />
+            )}
+          </section>
+        </main>
+        {wildcardIcon === "Ya está usado" ? (
+          <div className="wildcard-text-overlay">
+            <label className="textIconUsed">
+              ¡Sólo se puede usar una vez por pregunta!
+            </label>
+          </div>
+        ) : (
+          wildcardIcon && (
+            <div className="wildcard-icon-overlay">
+              <i className={`${wildcardIcon} icon-large`}></i>
+            </div>
+          )
+        )}
       </div>
     </>
   );
